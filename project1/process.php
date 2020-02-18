@@ -12,7 +12,13 @@ $inputString = $_POST['inputString'];
  */
 function isPalindrome(string $inputString) : string
 {
-    return 'yes';
+    $lowerCaseString =  strtolower($inputString);
+    $onlyAlphabeticString = preg_replace("/[^a-z]/", '', $lowerCaseString);
+    $reversedString = strrev($onlyAlphabeticString);
+
+    $isPalindrome = $reversedString === $onlyAlphabeticString ? "yes" : "no";
+
+    return $isPalindrome;
 }
 
 /**
