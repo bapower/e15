@@ -29,7 +29,10 @@ function isPalindrome(string $inputString) : string
  */
 function vowelCount(string $inputString) : int
 {
-    return 1;
+    $lowerCaseString =  strtolower($inputString);
+    $vowelCount = preg_match_all('/[aeiou]/i', $lowerCaseString);
+
+    return $vowelCount;
 }
 
 /**
