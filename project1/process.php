@@ -36,14 +36,31 @@ function vowelCount(string $inputString) : int
 }
 
 /**
- * Shifts each letter in the input string 1 position in the alphabet.
+ * Shifts each letter in the input string 1 position in the alphabet. Non alphabetic characters are ignored.
  *
  * @param string $inputString
  * @return string
  */
 function shiftLetters(string $inputString) : string
 {
-    return 'abc';
+    $alphabet = 'abcdefghijklmnopqrstuvwxyz';
+    $lowerCaseString =  strtolower($inputString);
+    $onlyAlphabeticString = preg_replace("/[^a-z]/", '', $lowerCaseString);
+    $letters = str_split($onlyAlphabeticString);
+    $shiftedString = '';
+
+    foreach($letters as $letter) {
+        $position = strpos($alphabet, $letter) + 1;
+
+        if ($position >= strlen($alphabet)) {
+            $position = $position - strlen($alphabet);
+        }
+
+        $shiftedString .= $alphabet[$position];
+    }
+
+    return $shiftedString;
+
 }
 
 $_SESSION['results'] = [
