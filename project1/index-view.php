@@ -2,26 +2,35 @@
 <html>
     <head>
         <title>e15 Project 1</title>
+        <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <h1>e15 Project 1</h1>
+        <div class="wrapper">
+            <h1>e15 Project 1</h1>
+            <p>by: Bry Power</p>
+            <div class="form-wrapper">
+                <form method="POST" action="process.php" class="form">
+                    <fieldset>
+                        <legend>Run Processors on a String</legend>
+                        <label for="inputString">String to process:</label>
+                        <input type="text" id="inputString" name="inputString">
+                        <button type="submit" class="button">Process</button>
+                    </fieldset>
+                </form>
+                <?php if(isset($results)) : ?>
+                    <div class="results">
+                        <h2>Is Palindrome? </h2>
+                        <p><?= $isPalindrome ?></p>
 
-        <form method="POST" action="process.php">
-            <label for="inputString">Enter a String:</label>
-            <input type="text" id="inputString" name="inputString">
-            <button type="submit">Process</button>
-        </form>
+                        <h2>Vowel Count</h2>
+                        <p><?= $vowelCount ?></p>
 
-        <?php if(isset($results)) : ?>
-            <h2>Is Palindrome?</h2>
-            <?= $isPalindrome ?>
+                        <h2>Shifted Letters</h2>
+                        <p><?= $shiftedLetters ?></p>
+                    </div>
 
-            <h2>Vowel Count</h2>
-            <?= $vowelCount ?>
-
-            <h2>Shifted Letters</h2>
-            <?= $shiftedLetters ?>
-
-        <?php endif ?>
+                <?php endif ?>
+            </div>
+        </div>
     </body>
 </html>

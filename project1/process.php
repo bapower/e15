@@ -36,7 +36,7 @@ function vowelCount(string $inputString) : int
 }
 
 /**
- * Shifts each letter in the input string 1 position in the alphabet.
+ * Shifts each letter in the input string 1 position in the alphabet. Retains spaces, non-alphabetic characters and capitalization.
  *
  * @param string $inputString
  * @return string
