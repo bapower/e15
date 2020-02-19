@@ -49,10 +49,7 @@ function shiftLetters(string $inputString) : string
 
     foreach($characters as $character) {
 
-        if(ctype_space($character)) {
-            $shiftedString .= ' ';
-            continue;
-        } elseif(!ctype_alpha($character)) {
+        if(!ctype_alpha($character)) {
             $shiftedString .= $character;
             continue;
         }
