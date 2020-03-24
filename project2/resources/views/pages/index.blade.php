@@ -14,7 +14,7 @@
 
         <fieldset>
             <label for='startingBalance'>
-                Starting Balance:
+                Starting Balance ($):
                 <input type='text' name='startingBalance' value='{{ old('startingBalance', $startingBalance) }}'>
             </label>
        
