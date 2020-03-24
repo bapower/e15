@@ -42,7 +42,7 @@ class ProjectController extends Controller
         $request->validate([
             'startingBalance' => 'required|min:0|currency',
             'monthlyContribution' => 'required|min:0|currency',
-            'growTime' => 'required|numeric|min:0',
+            'growTime' => 'required|integer|min:0',
             'timeUnit'=> 'required',
             'interestRate' => 'required'
         ]);
