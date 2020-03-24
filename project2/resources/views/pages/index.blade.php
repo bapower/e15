@@ -66,11 +66,13 @@
         <input type='submit' class="button" value='Calculate'>
 
         @if(count($errors) > 0)
-        <ul class='alert alert-danger error'>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
+        <div class='results error'>
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
         @endif
     </form>
 </div>

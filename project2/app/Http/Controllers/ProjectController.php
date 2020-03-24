@@ -35,9 +35,9 @@ class ProjectController extends Controller
     public function calculate(Request $request)
     {
         $request->validate([
-            'startingBalance' => 'required',
-            'monthlyContribution' => 'required',
-            'growTime' => 'required',
+            'startingBalance' => 'required|numeric',
+            'monthlyContribution' => 'required|numeric',
+            'growTime' => 'required|numeric',
             'timeUnit'=> 'required',
             'interestRate' => 'required'
         ]);
@@ -58,7 +58,7 @@ class ProjectController extends Controller
 
         }
 
-        $endBalance = round($endBalance, 2);
+        $endBalance = number_format(round($endBalance, 2));
 
         return redirect(URL::to('/'))->with([
             'startingBalance' => $startingBalance,

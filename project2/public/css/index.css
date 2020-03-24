@@ -75,6 +75,11 @@ label[for='months'] {
     font-size: 18px;
 }
 
+.results.error {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
 .button {
     background-color: #ededed;
     border-radius: .5em;
