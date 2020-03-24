@@ -11,13 +11,4 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/example', function () {
-	$title = "hi";
-    dump($title);
-    return view('books.edit');
-});
-
+Route::get('/', 'ProjectController@index');
