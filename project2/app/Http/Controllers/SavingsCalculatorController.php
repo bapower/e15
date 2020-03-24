@@ -36,13 +36,13 @@ class SavingsCalculatorController extends Controller
         Validator::extend('currency', function($attribute, $value)
         {
             $valueWithOutCommas = str_replace(',', '', $value);
-            return is_numeric($valueWithOutCommas);
-        }, 'The :attribute field must be a valid number');
+            return is_numeric($valueWithOutCommas) && $valueWithOutCommas >= 0;
+        }, 'The :attribute field must be a valid positive number');
 
         $request->validate([
-            'startingBalance' => 'required|min:0|currency',
-            'monthlyContribution' => 'required|min:0|currency',
-            'growTime' => 'required|integer|min:0',
+            'startingBalance' => ['required', 'min:0', 'currency'],
+            'monthlyContribution' => ['required', 'min:0', 'currency'],
+            'growTime' => ['required', 'min:0', 'max:1000', 'integer',],
             'timeUnit'=> 'required',
             'interestRate' => 'required'
         ]);
