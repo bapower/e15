@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Arr;
 use Str;
+use URL;
 
 class ProjectController extends Controller
 {
@@ -59,7 +60,7 @@ class ProjectController extends Controller
 
         $endBalance = round($endBalance, 2);
 
-        return redirect('/')->with([
+        return redirect(URL::to('/'))->with([
             'startingBalance' => $startingBalance,
             'monthlyContribution' => $monthlyContribution,
             'growTime' => $growTime,
