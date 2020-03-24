@@ -11,5 +11,5 @@
 |
 */
 
-Route::get('/', 'ProjectController@index');
-Route::get('/calculate', 'ProjectController@calculate');
+Route::get('/', 'SavingsCalculatorController@index');
+Route::get('/calculate', 'SavingsCalculatorController@calculate');

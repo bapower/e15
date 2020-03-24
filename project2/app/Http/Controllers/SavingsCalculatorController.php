@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use URL;
 use Validator;
 
-class ProjectController extends Controller
+class SavingsCalculatorController extends Controller
 {
     /**
      * GET /
