@@ -12,3 +12,4 @@
 */
 
 Route::get('/', 'ProjectController@index');
+Route::get('/calculate', 'ProjectController@calculate');

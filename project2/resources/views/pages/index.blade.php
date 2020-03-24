@@ -8,7 +8,7 @@
 <h1>E15 Project 2</h1>
 <p>By: Bry Power</p>
 
-<form method='GET' action='/search'>
+<form method='GET' action='/calculate'>
 
     <h2>Savings Calculator</h2>
 
@@ -61,6 +61,7 @@
     <fieldset>
         <label for='interestRate'>
             Interest Rate:
+
             <select name='interestRate'>
               <option value="1" {{ (old('interestRate') == '1' or $interestRate == '1') ? 'selected' : '' }}>1%</option>
               <option value="2" {{ (old('interestRate') == '2' or $interestRate == '2') ? 'selected' : '' }}>2%</option>
@@ -71,7 +72,7 @@
         </label>
     </fieldset>
 
-    <input type='submit' class='btn btn-primary' value='Search'>
+    <input type='submit' class='btn btn-primary' value='Calculate'>
 
     @if(count($errors) > 0)
     <ul class='alert alert-danger error'>
@@ -81,5 +82,11 @@
     </ul>
     @endif
 </form>
+
+@if(!is_null($endBalance))
+    <div class='results alert alert-primary'>
+       ${{ $endBalance }} 
+    </div>
+@endif
 
 @endsection
