@@ -17,7 +17,7 @@ class ProjectController extends Controller
         $startingBalance = session('startingBalance', null);
         $monthlyContribution = session('monthlyContribution', null);
         $growTime = session('growTime', null);
-        $timeUnit = session('timeBalance', null);
+        $timeUnit = session('timeUnit', null);
         $interestRate = session('interestRate', null);
         $endBalance = session('endBalance', null);
       
