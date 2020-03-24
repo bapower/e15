@@ -64,7 +64,7 @@ class ProjectController extends Controller
 
         }
 
-        $endBalance = number_format(round($endBalance, 2));
+        $endBalance = number_format($endBalance, 2);
 
         return redirect(URL::to('/'))->with([
             'startingBalance' => $startingBalance,
