@@ -55,11 +55,12 @@ class ProjectController extends Controller
 
         ($timeUnit === 'years') ? $growTimeInMonths = $growTime*12 : $growTimeInMonths = $growTime;
         $numericStartingBalance = str_replace(',', '', $request->input('startingBalance', null));
+        $numericMonthlyContribution = str_replace(',', '', $request->input('monthlyContribution', null));
         $ratePerMonth = $interestRate/12;
         $endBalance = $numericStartingBalance;
 
         for($i = 1; $i <= $growTimeInMonths; $i++) {
-            $endBalance += $monthlyContribution;
+            $endBalance += $numericMonthlyContribution;
             $endBalance = $endBalance*(1 + ($ratePerMonth/100));
 
         }
