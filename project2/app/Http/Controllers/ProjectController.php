@@ -37,7 +37,7 @@ class ProjectController extends Controller
         {
             $valueWithOutCommas = str_replace(',', '', $value);
             return is_numeric($valueWithOutCommas);
-        });
+        }, 'The :attribute field must be a valid number');
 
         $request->validate([
             'startingBalance' => 'required|min:0|currency',
