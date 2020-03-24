@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Arr;
-use Str;
 use URL;
+use Validator;
 
 class ProjectController extends Controller
 {
@@ -34,10 +33,16 @@ class ProjectController extends Controller
 
     public function calculate(Request $request)
     {
+        Validator::extend('currency', function($attribute, $value)
+        {
+            $valueWithOutCommas = str_replace(',', '', $value);
+            return is_numeric($valueWithOutCommas);
+        });
+
         $request->validate([
-            'startingBalance' => 'required|numeric',
-            'monthlyContribution' => 'required|numeric',
-            'growTime' => 'required|numeric',
+            'startingBalance' => 'required|min:0|currency',
+            'monthlyContribution' => 'required|min:0|currency',
+            'growTime' => 'required|numeric|min:0',
             'timeUnit'=> 'required',
             'interestRate' => 'required'
         ]);
@@ -49,8 +54,9 @@ class ProjectController extends Controller
         $interestRate = $request->input('interestRate', null);
 
         ($timeUnit === 'years') ? $growTimeInMonths = $growTime*12 : $growTimeInMonths = $growTime;
+        $numericStartingBalance = str_replace(',', '', $request->input('startingBalance', null));
         $ratePerMonth = $interestRate/12;
-        $endBalance = $startingBalance;
+        $endBalance = $numericStartingBalance;
 
         for($i = 1; $i <= $growTimeInMonths; $i++) {
             $endBalance += $monthlyContribution;
