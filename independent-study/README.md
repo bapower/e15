@@ -4,8 +4,8 @@
 ## What is Node.js
 Node.js is an open-source, JavaScript run-time environment used to execute JavaScript code on the server-side. Node.js development process has changed the paradigm that JavaScript is used primarily on the client-side. 
 
-## WHat is Laravel
-Laravel is a free, open-source PHP web framework, for development of web applications. Laravel follows the model-view architectural pattern based on Symfony. Has a plethora of features such as a modular packaging system with dedicated dependency manager, and different ways for accessing relational databases, and so on.
+## What is Laravel
+Laravel is a free, open-source PHP web framework, for development of web applications. Laravel is object oriented and follows the model-view architectural pattern. It has many features and built in tools and libraries to make development easier.
 
 ## Benefits of Node.js
 * Support for multithreading. 
