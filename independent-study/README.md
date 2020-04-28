@@ -160,6 +160,9 @@ When using Node.js, you have the option to use server-side rendering. This is es
 
 ## Outside Resources
 * [Node.js Documentation](https://nodejs.org/api/)
+* [Node.js for PHP Developers: Porting PHP to Node.js](https://www.amazon.com/Node-js-PHP-Developers-Porting-dp-1449333605/dp/1449333605/)
+* [Jump Start Node.js: Get Up to Speed With Node.js in a Weekend](https://www.amazon.com/Jump-Start-Node-js-Speed-Weekend/dp/0987332104)
+* [Node.js Basics](https://teamtreehouse.com/library/nodejs-basics-2)
 * [Laravel vs Node.js](https://stackshare.io/stackups/laravel-vs-nodejs)
 * [Why The Hell Would I Use Node.js? A Case-by-Case Tutorial](https://www.toptal.com/nodejs/why-the-hell-would-i-use-node-js)
 * [PHP vs NodeJS comparison and benchmarks](https://thinkmobiles.com/blog/php-vs-nodejs/)
