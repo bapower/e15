@@ -144,7 +144,7 @@ This method also has consequences for single page applications, where the conten
 When using Node.js, you have the option to use server-side rendering. This is especially easy to implement with a Node.js framework such as Next.js, Nuxt.js, or Nest.js. With server-side rendering, the server’s response to the browser is the full HTML ready to be rendered so the browser can start rendering without having to wait for all the JavaScript to be downloaded and compiled. This means you can render your page on the server before it hits the browser, allowing users to see the page quicker. 
 
 
-# Benefits of Node.js (over traditional Server-side frameworks such as Laravel/PHP)
+## Benefits of Node.js (over traditional Server-side frameworks such as Laravel/PHP)
 * Support for multi-threading
 * Built-in server support
 * A single syntax for client and server side of the website
