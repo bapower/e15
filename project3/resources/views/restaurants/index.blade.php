@@ -6,19 +6,15 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">Food For Thought Reviews</div>
-                    <div class="card-body">
-                        @foreach ($restaurant->reviews as $review)
-                            <div>
-                                <img src="{{ $review->image }}" alt="{{ $restaurant->name }} review">
+                        @foreach ($restaurants as $restaurant)
+                            <div class="card-body">
                                 <h4>
-                                    <a href="reviews/{{ $review->id }}">
-                                        {{ $review->title }}
+                                    <a href="restaurants/{{ $restaurant->id }}/reviews">
+                                        {{ $restaurant->name}}
                                     <a>
                                 </h4>
-                                <div class="body">{{ $review->body }}</div>
                             </div>
                         @endforeach
-                    </div>
                 </div>
             </div>
         </div>

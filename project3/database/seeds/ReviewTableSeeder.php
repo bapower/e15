@@ -12,6 +12,10 @@ class ReviewTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(Review::class, 10)->make();
+        $try = factory(Review::class, 10)->make();
+        var_dump($try);exit;
+//        factory(App\Review::class, 10)->create()->each(function ($review) {
+//            $review->replies()->save(factory(App\Reply::class)->make());
+//        });
     }
 }

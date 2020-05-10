@@ -46,6 +46,7 @@ class SavingsCalculatorController extends Controller
             'timeUnit'=> 'required',
             'interestRate' => 'required'
         ]);
+        dd($request->has('growTime3'));
 
         $startingBalance = $request->input('startingBalance', null);
         $monthlyContribution = $request->input('monthlyContribution', null);

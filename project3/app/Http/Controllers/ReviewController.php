@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Restaurant;
 use App\Review;
 use Illuminate\Http\Request;
 
@@ -12,10 +13,13 @@ class ReviewController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(int $restaurant_id)
     {
-        $reviews = Review::latest()->get();
-        return view('reviews.index', compact($reviews));
+        $restaurant = Restaurant::find($restaurant_id);
+
+        return view('reviews.index')->with([
+            'restaurant' =>$restaurant
+        ]);
     }
 
     /**
@@ -42,21 +46,24 @@ class ReviewController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Review  $thread
+     * @param  \App\Review  $review
      * @return \Illuminate\Http\Response
      */
-    public function show(Review $thread)
+    public function show(Restaurant $restaurant, Review $review)
     {
-        //
+        return view('reviews.show')->with([
+            'restaurant' => $restaurant,
+            'review' => $review
+        ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Review  $thread
+     * @param  \App\Review  $review
      * @return \Illuminate\Http\Response
      */
-    public function edit(Review $thread)
+    public function edit(Review $review)
     {
         //
     }
@@ -65,10 +72,10 @@ class ReviewController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Review  $thread
+     * @param  \App\Review  $review
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Review $thread)
+    public function update(Request $request, Review $review)
     {
         //
     }
@@ -76,10 +83,10 @@ class ReviewController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Review  $thread
+     * @param  \App\Review  $review
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Review $thread)
+    public function destroy(Review $review)
     {
         //
     }
