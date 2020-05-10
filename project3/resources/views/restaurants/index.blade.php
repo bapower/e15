@@ -11,7 +11,7 @@
                         @foreach ($restaurants as $restaurant)
                             <div class="card-body">
                                 <h4>
-                                    <a href="restaurants/{{ $restaurant->id }}/reviews">
+                                    <a href="restaurants/{{ $restaurant->slug }}/reviews">
                                         {{ $restaurant->name}}
                                     <a>
                                 </h4>

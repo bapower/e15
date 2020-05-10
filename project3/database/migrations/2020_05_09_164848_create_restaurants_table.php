@@ -16,10 +16,11 @@ class CreateRestaurantsTable extends Migration
         Schema::create('restaurants', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('slug');
             $table->string('street_address');
             $table->string('city');
-            $table->string('state_province')->nullable();
-            $table->string('country');
+            $table->string('state');
+            $table->string('post_code');
             $table->timestamps();
         });
     }

@@ -31,7 +31,8 @@
                     <form method="POST" action="{{ $review->id }}/replies">
                         {{ csrf_field() }}
                         <div class="form-group">
-                            <textarea name="body" id="body" cols="30" rows="5" class="form-control" placeholder="Have a reply?"></textarea>
+                            <textarea name="body" id="body" cols="30" rows="5" class="form-control" placeholder="Have a reply?">{{ old('body') }}</textarea>
+                            @include('includes.error-field', ['fieldName' => 'body'])
                         </div>
                         <button type="submit" class="btn btn-primary">Post</button>
 

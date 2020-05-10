@@ -19,8 +19,11 @@ class ReplyController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Restaurant $restaurant, Review $review)
+    public function store(string $restaurantSlug, Review $review)
     {
+        $this->validate(request(), [
+            'body' => 'required'
+        ]);
         $review->addReply([
             'body' => request('body'),
             'user_id' => auth()->id()

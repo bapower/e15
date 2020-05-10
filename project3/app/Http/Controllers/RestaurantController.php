@@ -47,8 +47,10 @@ class RestaurantController extends Controller
      * @param  \App\restaurant  $restaurant
      * @return \Illuminate\Http\Response
      */
-    public function show(Restaurant $restaurant)
+    public function show(string $slug)
     {
+        $restaurant = Restaurant::where('slug', '=', $slug)->first();
+        
         return view('restaurants.show')->with([
             'restaurant' => $restaurant
         ]);

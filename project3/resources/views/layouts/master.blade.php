@@ -45,10 +45,10 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         <li><a href='/'>Home</a></li>
-                        <li><a href='/resturants'>All Restaurants</a></li>
+                        <li><a href='restaurants'>All Restaurants</a></li>
                         @if(Auth::user())
-                            <li><a href='/resturants/create'>Add a Restaurant</a></li>
-                            <li><a href='/list'>Restaurants I reviewed</a></li>
+                            <li><a href='restaurants/create'>Add a Restaurant</a></li>
+                            <li><a href='list'>Restaurants I reviewed</a></li>
                         @endif
 
                         <li><a href='/support'>Support</a></li>

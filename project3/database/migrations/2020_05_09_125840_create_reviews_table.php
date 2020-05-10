@@ -15,11 +15,11 @@ class CreateReviewsTable extends Migration
     {
         Schema::create('reviews', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id');
-            $table->integer('restaurant_id');
+            $table->unsignedInteger('user_id');
+            $table->unsignedInteger('restaurant_id');
             $table->string('title');
             $table->text('body');
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

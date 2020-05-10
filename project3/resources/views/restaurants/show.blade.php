@@ -11,12 +11,12 @@
                     <div class="card-body">
                         {{ $restaurant->street_address }}
                         {{ $restaurant->city }}
-                        {{ $restaurant->state_province }}
-                        {{ $restaurant->country }}
+                        {{ $restaurant->state }}
+                        {{ $restaurant->post_code }}
                     </div>
                 </div>
             </div>
         </div>
-        <a href="{{ $restaurant->id }}/reviews">See reviews for {{ $restaurant->name }}</a>
+        <a href="{{ $restaurant->slug }}/reviews">See reviews for {{ $restaurant->name }}</a>
     </div>
 @endsection
