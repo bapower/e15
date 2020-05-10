@@ -31,6 +31,6 @@ Route::get('/restaurants/{restaurantSlug}/reviews/create', 'ReviewController@cre
 Route::post('/restaurants/{restaurantSlug}/reviews/store', 'ReviewController@store');
 
 Route::get('/restaurants/{restaurantSlug}/reviews/{id}/edit', 'ReviewController@edit');
-Route::put('/restaurants/{restaurantSlug}/reviews/{id}', 'ReviewController@update');
+Route::put('/restaurants/{restaurantSlug}/reviews/{id}/update', 'ReviewController@update');
 
 Route::post('/restaurants/{restaurantSlug}/reviews/{review}/replies', 'ReplyController@store');

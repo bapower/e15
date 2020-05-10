@@ -7,31 +7,32 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Edit review</div>
+                    <div class="card-header">Edit review {{ $review->title }}</div>
                     <div class="card-body">
                         @if (auth()->check())
                             <div class="row justify-content-center">
                                 <div class="col-md-8">
-                                    <form method="POST" action="./">
+                                    <form method="POST" action="./update">
                                         {{ csrf_field() }}
+                                        {{ method_field('put') }}
                                         <div class="form-group">
                                             <label for="title">Title:</label>
-                                            <input type="text" name="title" id="title" class="form-control" value='{{ old('title') }}'></input>
+                                            <input type="text" name="title" id="title" class="form-control" value='{{ old('title', $review->title) }}'></input>
                                             @include('includes.error-field', ['fieldName' => 'title'])
                                         </div>
                                         <div class="form-group">
                                             <label for="body">Body:</label>
-                                            <textarea name="body" id="body" cols="30" rows="8" class="form-control" >{{ old('body') }}</textarea>
+                                            <textarea name="body" id="body" cols="30" rows="8" class="form-control" >{{ old('body', $review->body) }}</textarea>
                                             @include('includes.error-field', ['fieldName' => 'body'])
                                         </div>
                                         <div class="form-group">
                                             <label for="image">Image:</label>
-                                            <input type="file" id="image" name="image" class="form-control" accept="image/*" value='{{ old('image') }}'></input>
+                                            <input type="file" id="image" name="image" class="form-control" accept="image/*" value='{{ old('image', $review->image) }}'></input>
                                             @include('includes.error-field', ['fieldName' => 'image'])
                                         </div>
-                                        <button type="submit" class="btn btn-primary">Publish</button>
-
+                                        <button type="submit" class="btn btn-primary">Update</button
                                     </form>
+                                    <a href="./">Back to review</a>
                                 </div>
                             </div>
                         @else

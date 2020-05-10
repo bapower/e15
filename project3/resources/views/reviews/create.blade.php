@@ -12,7 +12,7 @@
                         @if (auth()->check())
                             <div class="row justify-content-center">
                                 <div class="col-md-8">
-                                    <form method="POST" action="./">
+                                    <form method="POST" action="./store">
                                         {{ csrf_field() }}
                                         <div class="form-group">
                                             <label for="title">Title:</label>

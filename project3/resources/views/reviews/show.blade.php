@@ -6,7 +6,8 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <h2>Reviews for {{ $restaurant->name }}</h2>
+                <h2>Review for {{ $restaurant->name }}</h2>
+                <a href="./">Back to all reviews for {{ $restaurant->name }}</a>
                 <div class="card">
                     <img class="card-img-top" src="{{ $review->image }}" alt="{{ $restaurant->name }} review">
                     <div class="card-header">
@@ -15,6 +16,11 @@
                     <div class="card-body">
                         {{ $review->body }}
                     </div>
+                        @if (auth()->user()->id === $review->user_id)
+                            <div class="card-footer">
+                                <a href="{{ $review->id }}/edit">Edit this review</a>
+                            </div>
+                        @endif
                 </div>
             </div>
         </div>
@@ -40,7 +46,7 @@
                 </div>
             </div>
         @else
-            <p class="text-center">Please <a href="{{ route('login') }}">sign in </a>to reply to this review</ptext-center>
+            <p class="text-center">Please <a href="{{ route('login') }}">sign in </a>to reply to this review</p>
         @endif
     </div>
 @endsection

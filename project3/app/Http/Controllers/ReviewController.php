@@ -63,7 +63,9 @@ class ReviewController extends Controller
             'image' => request('image')
         ]);
 
-        return redirect('/restaurants/' . $restaurant->slug . '/reviews/' . $review->id);
+        return redirect('/restaurants/' . $restaurant->slug . '/reviews/' . $review->id)->with([
+            'flash-alert' => 'Your review was published'
+        ]);;
     }
 
     /**
@@ -87,9 +89,14 @@ class ReviewController extends Controller
      * @param  \App\Review  $review
      * @return \Illuminate\Http\Response
      */
-    public function edit(Review $review)
+    public function edit(string $restaurantSlug, int $id)
     {
-        //
+        $review = Review::find($id);
+        $restaurant = Restaurant::where('slug', '=', $restaurantSlug)->first();
+        return view('reviews.edit')->with([
+            'review' => $review,
+            'restaurant' => $restaurant
+        ]);
     }
 
     /**
@@ -99,9 +106,25 @@ class ReviewController extends Controller
      * @param  \App\Review  $review
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Review $review)
+    public function update(Request $request, string $restaurantSlug, int $id)
     {
-        //
+        $review = Review::find($id);
+        $restaurant = Restaurant::where('slug', '=', $restaurantSlug)->first();
+
+        $request->validate([
+            'title' => 'required',
+            'body' => 'required|min:50'
+        ]);
+
+        $review->title = $request->title;
+        $review->body = $request->body;
+        $review->restaurant_id = $restaurant->id;
+        $review->user_id = auth()->id();
+        $review->save();
+
+        return redirect('/restaurants/' . $restaurant->slug . '/reviews/' . $review->id . '/edit')->with([
+            'flash-alert' => 'Your changes were saved.'
+        ]);
     }
 
     /**
@@ -112,6 +135,6 @@ class ReviewController extends Controller
      */
     public function destroy(Review $review)
     {
-        //
+
     }
 }

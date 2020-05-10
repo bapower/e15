@@ -7,7 +7,10 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ $restaurant->name }} Reviews</div>
+                    <div class="card-header">
+                        <h2>{{ $restaurant->name }} Reviews</h2>
+                        <a href="/restaurants">Back to all restaurants</a>
+                    </div>
                     <div class="card-body">
                         @if(count($restaurant->reviews) > 0)
                             @foreach ($restaurant->reviews as $review)
