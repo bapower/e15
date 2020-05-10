@@ -12,6 +12,15 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
+        User::updateOrCreate(
+            ['email' => 'jill@harvard.edu', 'name' => 'Jill Harvard'],
+            ['password' => Hash::make('helloworld')
+            ]);
+
+        User::updateOrCreate(
+            ['email' => 'jamal@harvard.edu', 'name' => 'Jamal Harvard'],
+            ['password' => Hash::make('helloworld')
+            ]);
         factory(User::class, 10)->make();
     }
 }

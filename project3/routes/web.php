@@ -25,8 +25,10 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/restaurants', 'RestaurantController@index');
+Route::get('/restaurants/{restaurant}', 'RestaurantController@show');
+
 Route::get('/restaurants/{restaurant}/reviews', 'ReviewController@index');
 Route::get('/restaurants/{restaurant}/reviews/{review}', 'ReviewController@show');
 
-Route::get('/restaurants', 'RestaurantController@index');
-Route::get('/restaurants/{restaurant}', 'RestaurantController@show');
+Route::post('/restaurants/{restaurant}/reviews/{review}/replies', 'ReplyController@store');

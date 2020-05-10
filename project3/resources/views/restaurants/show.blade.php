@@ -1,5 +1,7 @@
-@extends('layouts.app')
-
+@extends('layouts.master')
+@section('title')
+    {{ $restaurant ? $restaurant->name : 'Restaurant not found' }}
+@endsection
 @section('content')
     <div class="container">
         <div class="row justify-content-center">

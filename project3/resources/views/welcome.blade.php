@@ -1,100 +1,92 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.master')
 
-        <title>Laravel</title>
+@section('head')
+    <link href='/css/pages/welcome.css' rel='stylesheet'>
+@endsection
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+@section('content')
 
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-            }
+    @if(!Auth::user())
+        <p>
+            Welcome to Food for Thought&mdash; an online restaurant review platform.
+        </p>
 
-            .full-height {
-                height: 100vh;
-            }
+        <p>
+            <a href='/register' dusk='register-link'>Register now to get started...</a>
+        </p>
+    @else
+        <p>
+            Welcome back, {{ $userName }}
+        </p>
 
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
+        <form method='GET' action='/search'>
 
-            .position-ref {
-                position: relative;
-            }
+            <strong>Search for a restaurant to see reviews:</strong>
 
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
+            <fieldset>
+                <label for='searchTerms'>
+                    Search terms:
+                    <input type='text' name='searchTerms' value='{{ old('searchTerms', $searchTerms) }}'>
+                </label>
+            </fieldset>
 
-            .content {
-                text-align: center;
-            }
+            <fieldset>
+                <label>
+                    Search type:
+                </label>
 
-            .title {
-                font-size: 84px;
-            }
+                <input
+                    type='radio'
+                    name='searchType'
+                    id='title'
+                    value='title'
+                    {{ (old('searchType') == 'title' or $searchType == 'title') ? 'checked' : '' }}
+                >
+                <label for='title'> Title</label>
 
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
+                <input
+                    type='radio'
+                    name='searchType'
+                    id='author'
+                    value='author'
+                    {{ (old('searchType') == 'author' or $searchType == 'author') ? 'checked' : '' }}
+                >
+                <label for='author'> Author</label>
 
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
+            </fieldset>
 
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
-                </div>
+            <input type='submit' class='btn btn-primary' value='Search'>
+
+            @if(count($errors) > 0)
+                <ul class='alert alert-danger error'>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
             @endif
 
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
+        </form>
 
-                <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://vapor.laravel.com">Vapor</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+        @if(!is_null($searchResults))
+            @if(count($searchResults) == 0)
+                <div class='results alert alert-warning'>
+                    No results found.
+                    <a href='/books/create'>Want to write a review?</a>
                 </div>
-            </div>
-        </div>
-    </body>
-</html>
+            @else
+                <div class='results alert alert-primary'>
+
+                    {{ count($searchResults) }}
+                    {{ Str::plural('Result', count($searchResults)) }}:
+
+                    <ul>
+                        @foreach($searchResults as $slug => $book)
+                            <li><a href='/books/{{ $slug }}'> {{ $book['title'] }}</a></li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+        @endif
+    @endif
+
+@endsection
