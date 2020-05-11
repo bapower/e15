@@ -1,12 +1,13 @@
 <?php
 
 use App\Restaurant;
+use App\Review;
 use Illuminate\Database\Seeder;
 
-class RestaurantTableSeeder extends Seeder
+class AppTableSeeder extends Seeder
 {
     /**
-     * Run the database seeds for the restaurants table.
+     * Run the database seeds.
      *
      * @return void
      */
@@ -30,8 +31,12 @@ class RestaurantTableSeeder extends Seeder
             $restaurant->updated_at = $faker->dateTimeThisDecade();
 
             $restaurant->save();
-        }
 
-        factory(Restaurant::class, 10)->make();
+            factory(Review::class, rand(0, 5))->create(['restaurant_id' => $restaurant->id, 'user_id' => rand(1,3)])->each(function ($review) {
+                for ($i = 1; $i <= rand(1,5); $i++) {
+                    $review->replies()->save(factory(App\Reply::class)->create(['review_id' => $review->id, 'user_id' => rand(1,3)]));
+                }
+            });
+        }
     }
 }
