@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Reply;
 use App\Restaurant;
 use App\Review;
 use Illuminate\Http\Request;
@@ -30,5 +31,21 @@ class ReplyController extends Controller
         ]);
 
         return back();
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Review  $review
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(string $restaurantSlug, int $reviewId, int $replyId)
+    {
+        $reply = Reply::find($replyId);
+        $reply->delete();
+
+        return redirect('/restaurants/' . $restaurantSlug . '/reviews/'. $reviewId)->with([
+            'flash-alert' => 'Your reply was deleted'
+        ]);
     }
 }

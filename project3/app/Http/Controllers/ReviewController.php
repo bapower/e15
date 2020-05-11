@@ -57,7 +57,6 @@ class ReviewController extends Controller
         $review = Review::create([
             'user_id' => auth()->id(),
             'restaurant_id' => $restaurant->id,
-            //'restaurant_id' => $restaurantId,
             'title' => request('title'),
             'body' => request('body'),
             'image' => request('image')
@@ -122,8 +121,31 @@ class ReviewController extends Controller
         $review->user_id = auth()->id();
         $review->save();
 
-        return redirect('/restaurants/' . $restaurant->slug . '/reviews/' . $review->id . '/edit')->with([
+        return redirect('/restaurants/' . $restaurant->slug . '/reviews/' . $review->id)->with([
             'flash-alert' => 'Your changes were saved.'
+        ]);
+    }
+
+    /**
+     * Show the confirmation page before destroying specified resource.
+     *
+     * @param  \App\Review  $review
+     * @return \Illuminate\Http\Response
+     */
+    public function delete(string $restaurantSlug, int $id)
+    {
+        $review = Review::find($id);
+        $restaurant = Restaurant::where('slug', '=', $restaurantSlug)->first();
+
+        if(!$review) {
+            return back()->with(([
+                'flash-alert' => 'Review not found'
+            ]));
+        }
+
+        return view('reviews.delete')->with([
+            'review' => $review,
+            'restaurant' => $restaurant
         ]);
     }
 
@@ -133,8 +155,15 @@ class ReviewController extends Controller
      * @param  \App\Review  $review
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Review $review)
+    public function destroy(string $restaurantSlug, int $reviewId)
     {
+        $review = Review::find($reviewId);
+        $review->replies()->delete();
 
+        $review->delete();
+
+        return redirect('/restaurants/' . $restaurantSlug . '/reviews/')->with([
+            'flash-alert' => 'Your review was deleted'
+        ]);
     }
 }

@@ -14,9 +14,20 @@
                         {{ $restaurant->state }}
                         {{ $restaurant->post_code }}
                     </div>
+                    @if (auth()->check())
+                        <div class="card-footer">
+                            <ul class="list-group">
+                                @if (auth()->user()->restaurants()->find($restaurant->id))
+                                    <li class="list-group-item"><a href="http://localhost/e15/project3/public/favorites/{{ $restaurant->slug }}/destroy"><i class="fa fa-trash"></i> Remove from Favorites</a></li>
+                                @else
+                                    <li class="list-group-item"><a href="http://localhost/e15/project3/public/favorites/{{ $restaurant->slug }}/add"><i class="fa fa-plus"></i> Add to Favorites</a></li>
+                                @endif
+                            </ul>
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>
-        <a href="{{ $restaurant->slug }}/reviews">See reviews for {{ $restaurant->name }}</a>
+        <a href="http://localhost/e15/project3/public/restaurants/{{ $restaurant->slug }}/reviews">See reviews for {{ $restaurant->name }}</a>
     </div>
 @endsection

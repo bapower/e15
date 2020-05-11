@@ -7,7 +7,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <h2>Review for {{ $restaurant->name }}</h2>
-                <a href="./">Back to all reviews for {{ $restaurant->name }}</a>
+                <a href="http://localhost/e15/project3/public/restaurants/{{ $restaurant->slug }}/reviews">Back to all reviews for {{ $restaurant->name }}</a>
                 <div class="card">
                     <img class="card-img-top" src="{{ $review->image }}" alt="{{ $restaurant->name }} review">
                     <div class="card-header">
@@ -19,8 +19,8 @@
                         @if (auth()->user()->id === $review->user_id)
                             <div class="card-footer">
                                 <ul class="list-group">
-                                    <li class="list-group-item"><a href="{{ $review->id }}/edit"><i class="fa fa-edit"></i> Edit</a></li>
-                                    <li class="list-group-item"><a href="http://localhost/e15/project3/public/favorites/{{ $restaurant->slug }}/add"><i class="fa fa-plus"></i> Add to Favorites</a></li>
+                                    <li class="list-group-item"><a href="http://localhost/e15/project3/public/restaurants/{{ $restaurant->slug }}/reviews/{{ $review->id }}/edit"><i class="fa fa-edit"></i> Edit</a></li>
+                                    <li class="list-group-item"><a href="http://localhost/e15/project3/public/restaurants/{{ $restaurant->slug }}/reviews/{{ $review->id }}/delete"><i class="fa fa-trash"></i> Delete</a></li>
                                 </ul>
                             </div>
                         @endif

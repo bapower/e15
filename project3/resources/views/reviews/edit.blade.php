@@ -12,7 +12,7 @@
                         @if (auth()->check())
                             <div class="row justify-content-center">
                                 <div class="col-md-8">
-                                    <form method="POST" action="./update">
+                                    <form method="POST" action="http://localhost/e15/project3/public/restaurants/{{ $restaurant->slug }}/reviews/{{ $review->id }}">
                                         {{ csrf_field() }}
                                         {{ method_field('put') }}
                                         <div class="form-group">
