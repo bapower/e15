@@ -3,47 +3,104 @@
     {{ $restaurant ? 'Reviews for ' . $restaurant->name : 'Restaurant not found' }}
 @endsection
 @section('content')
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">
-                        <h2>{{ $restaurant->name }} Reviews</h2>
-                        <a href="http://localhost/e15/project3/public/restaurants">Back to all restaurants</a>
-                    </div>
-                    <div class="card-body">
-                        @if(count($restaurant->reviews) > 0)
-                            @foreach ($restaurant->reviews as $review)
-                                <div>
-                                    <img src="{{ $review->image }}" alt="{{ $restaurant->name }} review">
-                                    <h4>
-                                        <a href="http://localhost/e15/project3/public/restaurants/{{ $restaurant->slug }}/reviews/{{ $review->id }}">
-                                            {{ $review->title }}
-                                        <a>
-                                    </h4>
-                                    <div class="body">{{ $review->body }}</div>
-                                </div>
-                            @endforeach
-                        @else
-                            There are no reviews for {{ $restaurant->name }} yet...
-                        @endif
-                    </div>
-                    @if (auth()->check())
-                        <div class="card-footer">
-                            <ul class="list-group">
-                                @if (auth()->user()->restaurants()->find($restaurant->id))
-                                    <li class="list-group-item"><a href="http://localhost/e15/project3/public/favorites/{{ $restaurant->slug }}/destroy"><i class="fa fa-trash"></i> Remove from Favorites</a></li>
-                                @else
-                                    <li class="list-group-item"><a href="http://localhost/e15/project3/public/favorites/{{ $restaurant->slug }}/add"><i class="fa fa-plus"></i> Add to Favorites</a></li>
-                                @endif
-                            </ul>
-                        </div>
-                    @endif
-                </div>
-                @if (auth()->check())
-                    <a href="http://localhost/e15/project3/public/restaurants/{{ $restaurant->slug }}/reviews/create">Add a review for {{ $restaurant->name }}</a>
-                @endif
-            </div>
+    <div>
+        <div class="banner-container text-center">
+            <img src="http://localhost/e15/project3/public/images/restaurants/restaurant_default.jpg" class="img-fluid" alt="#">
         </div>
     </div>
+    <section class="reserve-block">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>{{ $restaurant->name }}</h5>
+                    <p><span>$$$</span>$$</p>
+                    <p class="reserve-description">Innovative cooking, paired with fine wines in a modern setting.</p>
+                </div>
+                <div class="col-md-6">
+                    <div class="reserve-seat-block">
+                        <div class="reserve-rating">
+                            <span>9.5</span>
+                        </div>
+                        <div class="review-btn">
+                            <a href="http://localhost/e15/project3/public/restaurants/{{ $restaurant->slug }}/reviews/create" class="btn btn-outline-danger">WRITE A REVIEW</a>
+                            <span>{{ count($restaurant->reviews) }} reviews</span>
+                        </div>
+                        @if (auth()->check())
+                            @if (auth()->user()->restaurants()->find($restaurant->id))
+                                <div class="reserve-btn">
+                                    <div class="featured-btn-wrap">
+                                        <a href="http://localhost/e15/project3/public/favorites/{{ $restaurant->slug }}/destroy" class="btn btn-danger"><span class="fa fa-trash"></span> REMOVE FROM FAVORITES</a>
+                                    </div>
+                                </div>
+                            @else
+                                <div class="reserve-btn">
+                                    <div class="featured-btn-wrap">
+                                        <a href="http://localhost/e15/project3/public/favorites/{{ $restaurant->slug }}/add" class="btn btn-danger"><span class="fa fa-heart-o"></span> ADD TO FAVORITES</a>
+                                    </div>
+                                </div>
+                            @endif
+                        @endif
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="light-bg booking-details_wrap">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 offset-md-2 responsive-wrap">
+                    <div class="booking-checkbox_wrap mt-4">
+                        <h5>{{ count($restaurant->reviews) }} Reviews</h5>
+                        <hr>
+                        @if(count($restaurant->reviews) > 0)
+                            @foreach ($restaurant->reviews as $review)
+                                <div class="customer-review_wrap">
+                                    <div class="customer-img">
+                                        <p>Reviewed by:</p>
+                                        <p>{{ $review->author->name }}</p>
+                                        @if (!is_null(auth()->user()) && auth()->user()->id === $review->user_id)
+                                            <div class="bottom-icons">
+                                                <p>
+                                                    <a href="http://localhost/e15/project3/public/restaurants/{{ $restaurant->slug }}/reviews/{{ $review->id }}/edit"><i class="fa fa-edit"></i> Edit</a>
+                                                </p>
+                                                <p>
+                                                    <a href="http://localhost/e15/project3/public/restaurants/{{ $restaurant->slug }}/reviews/{{ $review->id }}/delete"><i class="fa fa-trash"></i> Delete</a>
+                                                </p>
+                                            </div>
+                                        @endif
+                                    </div>
+                                    <div class="customer-content-wrap">
+                                        <div class="customer-content">
+                                            <div class="customer-review">
+                                                <h6>{{ $review->title }}</h6>
+                                                <span></span>
+                                                <span></span>
+                                                <span></span>
+                                                <span></span>
+                                                <span class="round-icon-blank"></span>
+                                                <p>Reviewed {{ $review->created_at->diffForHumans() }}</p>
+                                            </div>
+                                            <div class="customer-rating">8.0</div>
+                                        </div>
+                                        <p class="customer-text">{{ substr($review->body, 0, 100) }}...
+                                            <a class="review-link" href="http://localhost/e15/project3/public/restaurants/{{ $restaurant->slug }}/reviews/{{ $review->id }}/">read more</a>
+                                        </p>
+                                        <ul>
+                                            <li><img src="images/review-img1.jpg" class="img-fluid" alt="#"></li>
+                                            <li><img src="images/review-img2.jpg" class="img-fluid" alt="#"></li>
+                                            <li><img src="images/review-img3.jpg" class="img-fluid" alt="#"></li>
+                                        </ul>
+
+                                    </div>
+                                </div>
+                                <hr>
+                            @endforeach
+                        @else
+                            <a href="http://localhost/e15/project3/public/restaurants/{{ $restaurant->slug }}/reviews/create">Write a review</a>
+                        @endif
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 @endsection

@@ -6,87 +6,37 @@
 
 @section('content')
 
-    @if(!Auth::user())
-        <p>
-            Welcome to Food for Thought&mdash; an online restaurant review platform.
-        </p>
-
-        <p>
-            <a href='/register' dusk='register-link'>Register now to get started...</a>
-        </p>
-    @else
-        <p>
-            Welcome back, {{ $userName }}
-        </p>
-
-        <form method='GET' action='/search'>
-
-            <strong>Search for a restaurant to see reviews:</strong>
-
-            <fieldset>
-                <label for='searchTerms'>
-                    Search terms:
-                    <input type='text' name='searchTerms' value='{{ old('searchTerms', $searchTerms) }}'>
-                </label>
-            </fieldset>
-
-            <fieldset>
-                <label>
-                    Search type:
-                </label>
-
-                <input
-                    type='radio'
-                    name='searchType'
-                    id='title'
-                    value='title'
-                    {{ (old('searchType') == 'title' or $searchType == 'title') ? 'checked' : '' }}
-                >
-                <label for='title'> Title</label>
-
-                <input
-                    type='radio'
-                    name='searchType'
-                    id='author'
-                    value='author'
-                    {{ (old('searchType') == 'author' or $searchType == 'author') ? 'checked' : '' }}
-                >
-                <label for='author'> Author</label>
-
-            </fieldset>
-
-            <input type='submit' class='btn btn-primary' value='Search'>
-
-            @if(count($errors) > 0)
-                <ul class='alert alert-danger error'>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            @endif
-
-        </form>
-
-        @if(!is_null($searchResults))
-            @if(count($searchResults) == 0)
-                <div class='results alert alert-warning'>
-                    No results found.
-                    <a href='/books/create'>Want to write a review?</a>
+    <section class="slider d-flex align-items-center dark-bg">
+        <!-- <img src="images/slider.jpg" class="img-fluid" alt="#"> -->
+        <div class="container">
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-12">
+                    <div class="slider-title_box">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="slider-content_wrap">
+                                    <h1>Find and review great restaurants</h1>
+                                    <h5>Let's uncover places to eat that you'll love.</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row d-flex justify-content-center">
+                            <div class="col-md-10">
+                                <form class="form-wrap mt-4">
+                                    <div class="btn-group" role="group">
+                                        <input type="text" placeholder="Search for a restaurant" class="btn-group1">
+                                        <button type="submit" class="btn-form"><span class="icon-magnifier search-icon"></span>SEARCH<i class="pe-7s-angle-right"></i></button>
+                                    </div>
+                                </form>
+                                <div class="slider-link">
+                                    <a href="#">Browse Popular</a><span>or</span> <a href="#">Recently Added</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            @else
-                <div class='results alert alert-primary'>
-
-                    {{ count($searchResults) }}
-                    {{ Str::plural('Result', count($searchResults)) }}:
-
-                    <ul>
-                        @foreach($searchResults as $slug => $book)
-                            <li><a href='/books/{{ $slug }}'> {{ $book['title'] }}</a></li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
-        @endif
-    @endif
+            </div>
+        </div>
+    </section>
 
 @endsection

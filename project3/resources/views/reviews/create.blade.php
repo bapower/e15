@@ -3,12 +3,12 @@
     {{ $restaurant ? 'Write a review for ' . $restaurant->name : 'Restaurant not found' }}
 @endsection
 @section('content')
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">Write a review</div>
-                    <div class="card-body">
+    <section class="light-bg booking-details_wrap">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 offset-md-2 responsive-wrap">
+                    <div class="booking-checkbox_wrap mt-4">
+                        <h5 class="mb-3">Write a review for {{ $restaurant->name }}</h5>
                         @if (auth()->check())
                             <div class="row justify-content-center">
                                 <div class="col-md-8">
@@ -29,17 +29,18 @@
                                             <input type="file" id="image" name="image" class="form-control" accept="image/*" value='{{ old('image') }}'></input>
                                             @include('includes.error-field', ['fieldName' => 'image'])
                                         </div>
-                                        <button type="submit" class="btn btn-primary">Publish</button>
-
+                                        <div class="featured-btn-wrap">
+                                            <button type="submit" class="btn btn-danger">Publish</button>
+                                        </div>
                                     </form>
                                 </div>
                             </div>
                         @else
-                            <p class="text-center">Please <a href="{{ route('login') }}">sign in </a>to reply to this review</p>
+                            <p class="text-center">Please <a href="{{ route('login') }}">sign in </a>to write a review</p>
                         @endif
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 @endsection

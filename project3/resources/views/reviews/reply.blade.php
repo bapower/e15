@@ -1,17 +1,17 @@
-<div class="card">
-    <div class="card-header">
-        <a href="#">
-            {{ $reply->author->name }} said {{ $reply->created_at->diffForHumans() }} ...
-        </a>
+<div class="customer-review_wrap">
+    <div class="customer-img">
+        <p>{{ $reply->author->name }} said:</p>
+        <p>{{ $reply->created_at->diffForHumans() }}</p>
+        @if (!is_null(auth()->user()) && auth()->user()->id === $reply->user_id)
+            <div class="bottom-icons">
+                <p>
+                    <a href="http://localhost/e15/project3/public/restaurants/{{ $restaurant->slug }}/reviews/{{ $review->id }}/delete"><i class="fa fa-trash"></i> Delete</a>
+                </p>
+            </div>
+        @endif
     </div>
-    <div class="card-body">
-        {{ $reply->body }}
+    <div class="customer-content-wrap">
+        <p class="customer-text">{{ $reply->body }}</p>
     </div>
-    @if (auth()->user()->id === $reply->user_id)
-        <div class="card-footer">
-            <ul class="list-group">
-                <li class="list-group-item"><a href="http://localhost/e15/project3/public/restaurants/{{ $restaurant->slug }}/reviews/{{ $review->id }}/replies/{{ $reply->id }}/delete"><i class="fa fa-trash"></i> Delete</a></li>
-            </ul>
-        </div>
-    @endif
 </div>
+<hr>

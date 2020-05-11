@@ -42,4 +42,10 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Restaurant')
             ->withTimestamps();
     }
+
+    public function reviews()
+    {
+        return $this->belongsToMany('App\Review')
+            ->withTimestamps();
+    }
 }
