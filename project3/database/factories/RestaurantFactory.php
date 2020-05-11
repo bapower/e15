@@ -6,10 +6,10 @@ use App\Restaurant;
 use Faker\Generator as Faker;
 
 $factory->define(Restaurant::class, function (Faker $faker) {
-    $name = $faker->words(rand(1,3), true);
+    $name = $faker->words(rand(1,2), true);
     $slug = Str::slug($name, '-');
     return [
-        'name' => $name,
+        'name' => Str::title($name),
         'slug' => $slug,
         'street_address' => $faker->streetAddress(),
         'city' => $faker->city(),

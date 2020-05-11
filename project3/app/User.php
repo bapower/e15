@@ -36,4 +36,10 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function restaurants()
+    {
+        return $this->belongsToMany('App\Restaurant')
+            ->withTimestamps();
+    }
 }

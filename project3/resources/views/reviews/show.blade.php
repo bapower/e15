@@ -18,7 +18,10 @@
                     </div>
                         @if (auth()->user()->id === $review->user_id)
                             <div class="card-footer">
-                                <a href="{{ $review->id }}/edit">Edit this review</a>
+                                <ul class="list-group">
+                                    <li class="list-group-item"><a href="{{ $review->id }}/edit"><i class="fa fa-edit"></i> Edit</a></li>
+                                    <li class="list-group-item"><a href="http://localhost/e15/project3/public/favorites/{{ $restaurant->slug }}/add"><i class="fa fa-plus"></i> Add to Favorites</a></li>
+                                </ul>
                             </div>
                         @endif
                 </div>

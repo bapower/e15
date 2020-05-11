@@ -10,4 +10,10 @@ class Restaurant extends Model
     {
         return $this->hasMany(Review::class);
     }
+
+    public function users()
+    {
+        return $this->belongsToMany('App\User')
+            ->withTimestamps();
+    }
 }
