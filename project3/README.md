@@ -15,6 +15,7 @@
 + Users can delete replies that they have written
 + Users can add restaurants to their favorites
 + Users can view/ remove restaurants that are favorites
++ Users can mark a review as helpful
 
   
 ## Database summary

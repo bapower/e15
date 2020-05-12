@@ -126,4 +126,22 @@ With my them if up many. Lain week nay she them her she. Extremity so attending 
                 ->assertDontSee($review->title);
         });
     }
+
+    /**
+     * Test mark as helpful
+     * @group reviews
+     * @return void
+     */
+    public function testMarkAsHelpful()
+    {
+        $this->browse(function (Browser $browser) {
+            $review = factory(Review::class)->create();
+            $helpfulBefore = $review->helpful;
+            $browser->loginAs($review->author->id)
+                ->visit('/restaurants/' . $review->restaurant->slug . '/reviews/' . $review->id)
+                ->click('@helpful-button')
+                ->scrollIntoView('@helpful-button')
+                ->assertSee($helpfulBefore+1 . ' people marked this review as helpful');
+        });
+    }
 }

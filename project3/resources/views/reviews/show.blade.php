@@ -45,10 +45,12 @@
                         @endif
                         <hr>
                         <p class="customer-text">{{ $review->body }}</p>
-                        <div class="mt-3 helpful-container text-center">
-                            <span class="text-info">{{ $review->helpful }} people marked this review as helpful</span>
-                            <a href="/restaurants/{{ $restaurant->slug }}/reviews/{{ $review->id }}/helpful"><span class="fa fa-thumbs-up"></span>  Helpful</a>
-                        </div>
+                        @if(auth()->check())
+                            <div class="mt-3 helpful-container text-center">
+                                <span class="text-info">{{ $review->helpful }} people marked this review as helpful</span>
+                                <a href="/restaurants/{{ $restaurant->slug }}/reviews/{{ $review->id }}/helpful" dusk="helpful-button"><span class="fa fa-thumbs-up"></span>  Helpful</a>
+                            </div>
+                        @endif
                     </div>
                     <a href="/restaurants/{{ $restaurant->slug }}/reviews">Go back to all reviews for {{ $restaurant->name }}</a>
                 </div>
@@ -86,7 +88,6 @@
                                         @include('includes.error-field', ['fieldName' => 'body'])
                                     </div>
                                     <button type="submit" class="btn btn-primary" dusk="post-reply">Post</button>
-
                                 </form>
                             </div>
                         </div>
