@@ -27,7 +27,6 @@ Route::get('/restaurants/{restaurantSlug}', 'RestaurantController@show');
 Route::get('/restaurants/{restaurantSlug}/reviews/create', 'ReviewController@create');
 Route::post('/restaurants/{restaurantSlug}/reviews', 'ReviewController@store');
 
-//Route::resource('/restaurants/{restaurant}/reviews', 'ReviewController');
 Route::get('/restaurants/{restaurantSlug}/reviews', 'ReviewController@index');
 Route::get('/restaurants/{restaurantSlug}/reviews/{review}', 'ReviewController@show');
 

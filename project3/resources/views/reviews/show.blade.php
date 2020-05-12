@@ -3,6 +3,24 @@
     {{ $review ? $review->name : 'Review not found' }}
 @endsection
 @section('content')
+    <div>
+        <div class="banner-container text-center">
+            <img src="{{ $restaurant->image }}" class="img-fluid" alt="{{ $restaurant->name }}">
+        </div>
+    </div>
+    <section class="reserve-block">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <h5>Review of {{ $restaurant->name }}</h5>
+                    <p><span>{{ str_repeat('$', $restaurant->cost_rating) }}</span>{{ str_repeat('$', 5-$restaurant->cost_rating) }}</p>
+                    <div>
+                        <p class="reserve-description">{{ $restaurant->tagline }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     <section class="light-bg booking-details_wrap">
         <div class="container">
             <div class="row">
@@ -19,12 +37,8 @@
                         @endif
                         <hr>
                         <p class="customer-text">{{ $review->body }}</p>
-                        <ul>
-                            <li><img src="images/review-img1.jpg" class="img-fluid" alt="#"></li>
-                            <li><img src="images/review-img2.jpg" class="img-fluid" alt="#"></li>
-                            <li><img src="images/review-img3.jpg" class="img-fluid" alt="#"></li>
-                        </ul>
                     </div>
+                    <a href="/restaurants/{{ $restaurant->slug }}/reviews">Go back to all reviews for {{ $restaurant->name }}</a>
                 </div>
             </div>
         </div>
@@ -46,7 +60,6 @@
             </div>
         </section>
     @endif
-
     <section class="light-bg booking-details_wrap">
         <div class="container">
             <div class="row">
