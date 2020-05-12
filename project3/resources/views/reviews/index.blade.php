@@ -104,12 +104,6 @@
                                         <p class="customer-text">{{ substr($review->body, 0, 100) }}...
                                             <a class="review-link" href="/restaurants/{{ $restaurant->slug }}/reviews/{{ $review->id }}/">read more</a>
                                         </p>
-                                        <ul>
-                                            <li><img src="images/review-img1.jpg" class="img-fluid" alt="#"></li>
-                                            <li><img src="images/review-img2.jpg" class="img-fluid" alt="#"></li>
-                                            <li><img src="images/review-img3.jpg" class="img-fluid" alt="#"></li>
-                                        </ul>
-
                                     </div>
                                 </div>
                                 <hr>
