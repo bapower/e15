@@ -45,6 +45,10 @@
                         @endif
                         <hr>
                         <p class="customer-text">{{ $review->body }}</p>
+                        <div class="mt-3 helpful-container text-center">
+                            <span class="text-info">{{ $review->helpful }} people marked this review as helpful</span>
+                            <a href="/restaurants/{{ $restaurant->slug }}/reviews/{{ $review->id }}/helpful"><span class="fa fa-thumbs-up"></span>  Helpful</a>
+                        </div>
                     </div>
                     <a href="/restaurants/{{ $restaurant->slug }}/reviews">Go back to all reviews for {{ $restaurant->name }}</a>
                 </div>

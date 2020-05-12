@@ -169,4 +169,19 @@ class ReviewController extends Controller
             'flash-alert' => 'Your review was deleted'
         ]);
     }
+
+    /**
+     * Add one more helpful vote.
+     *
+     */
+    public function helpful(string $restaurantSlug, int $reviewId)
+    {
+        $review = Review::find($reviewId);
+        $review->helpful++;
+        $review->save();
+
+        return redirect('/restaurants/' . $restaurantSlug . '/reviews/' . $reviewId)->with([
+            'flash-alert' => 'Your helpful vote for this review was recorded'
+        ]);
+    }
 }

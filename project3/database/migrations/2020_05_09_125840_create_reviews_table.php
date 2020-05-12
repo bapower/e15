@@ -22,6 +22,7 @@ class CreateReviewsTable extends Migration
             $table->string('title');
             $table->text('body');
             $table->integer('rating');
+            $table->integer('helpful');
             $table->string('image')->nullable();
             $table->timestamps();
         });

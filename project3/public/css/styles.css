@@ -774,13 +774,26 @@ footer {
 @media (max-width: 992px) {
     .customer-content-wrap {
         margin: 0px; } }
-.customer-content-wrap ul {
-    margin: 24px 0 0;
-    padding: 0; }
-.customer-content-wrap ul li {
-    list-style: none;
-    display: inline-block;
-    margin: 0 10px 0 0; }
+
+.helpful-container a {
+    border: 1px solid #17a2b8;
+    color: #17a2b8;
+    font-size: 14px;
+    border-radius: 3px;
+    padding: 5px 10px;
+    margin: 0 0 0 10px;
+}
+
+.helpful-container a:hover {
+    border: 1px solid #17a2b8;
+    color: white;
+    background-color: #17a2b8;
+    font-size: 14px;
+    border-radius: 3px;
+    padding: 5px 10px;
+    margin: 0 0 0 10px;
+}
+
 @media (max-width: 480px) {
     .customer-content-wrap ul li {
         margin: 0 0 10px 0; } }

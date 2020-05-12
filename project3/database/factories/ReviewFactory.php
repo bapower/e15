@@ -21,6 +21,7 @@ $factory->define(Review::class, function (Faker $faker) {
         'body' => $faker->paragraphs(rand(2, 6), true),
         'image' => 'http://www.lorempixel.com/640/480/food/',
         'rating' => rand(1,10),
+        'helpful' => rand(0,100),
         'created_at' => $faker->dateTimeThisYear(),
         'updated_at' => $faker->dateTimeThisYear(),
     ];

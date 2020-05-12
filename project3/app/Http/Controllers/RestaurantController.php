@@ -87,7 +87,7 @@ class RestaurantController extends Controller
 
         return redirect('/restaurants')->with([
             'searchedRestaurants' => $restaurants,
-            'filter' => 'recent'
+            'filter' => 'recently added'
         ]);
     }
 }

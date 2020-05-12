@@ -35,6 +35,8 @@ Route::get('/restaurants/{restaurantSlug}/reviews/{review}', 'ReviewController@s
 Route::get('/restaurants/{restaurantSlug}/reviews/{id}/edit', 'ReviewController@edit');
 Route::put('/restaurants/{restaurantSlug}/reviews/{id}', 'ReviewController@update');
 
+Route::get('/restaurants/{restaurantSlug}/reviews/{id}/helpful', 'ReviewController@helpful');
+
 Route::get('/restaurants/{restaurantSlug}/reviews/{id}/delete', 'ReviewController@delete');
 Route::delete('/restaurants/{restaurantSlug}/reviews/{id}', 'ReviewController@destroy');
 
