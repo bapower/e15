@@ -48,7 +48,7 @@ class ReviewController extends Controller
     public function store(string $slug)
     {
         $restaurant = Restaurant::where('slug', '=', $slug)->first();
-        $imageName = time().'.'.request()->image->getClientOriginalExtension();
+        $imageName = time();
         request()->image->move(public_path('images'), $imageName);
 
         $this->validate(request(), [
