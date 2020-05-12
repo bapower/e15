@@ -1,79 +1,51 @@
-<p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+# Project 3 
++ By: Bry Power
++ Production URL: <http://e15p3.brypower.rocks>
 
-## About Laravel
+## Feature summary
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
++ Visitors can register/log in
++ Visitors can search for or browse restaurants
++ Visitors can read reviews and discussions about restaurants
++ Users can write reviews of restaurants
++ Users can update or delete reviews that they have written
++ Users can reply to reviews of restaurants
++ Users can delete replies that they have written
++ Users can add restaurants to their favorites
++ Users can view/ remove restaurants that are favorites
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+  
+## Database summary
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
++ My application has 5 tables in total (`users`, `resaurants`, `restaurant_user`, `reviews`, `replies`)
++ There's a many-to-many relationship between `restaurants` and `users`
++ There's a one-to-many relationship between `reviews` and `users`
++ There's a one-to-many relationship between `restaurants` and `replies`
++ There's a one-to-many relationship between `replies` and `users`
++ There's a one-to-many relationship between `replies` and `reviews`
 
-## Learning Laravel
+## Outside resources
+#### PHP Documentation
+* [strtolower](https://www.php.net/manual/en/function.strtolower.php)
+* [preg_match_all](https://www.php.net/manual/en/function.preg-match-all.php)
+* [strlen](https://www.php.net/manual/en/function.strlen.php)
+* [array_rand](https://www.php.net/manual/en/function.array-rand.php)
+* [str_repeat](https://www.php.net/manual/en/function.str-repeat.php)
+#### Other resources
+* [Laravel Documentation](https://laravel.com/docs/7.x/installation)
+* [regexr](https://regexr.com/)
+* [Name Generator](https://www.fantasynamegenerators.com/restaurant-names.php)
+* [Lorem Flickr](https://loremflickr.com/)
+* [Dusk Documentation](https://laravel.com/docs/7.x/dusk)
+* [Faker Documentation](https://github.com/fzaninotto/Faker)
+* [Bootstrap Documentation](https://getbootstrap.com/)
+* [Font Awesome Documentation](https://fontawesome.com/v4.7.0/icons/)
+* [Let's Build a Forum with Laravel and TDD](https://laracasts.com/series/lets-build-a-forum-with-laravel)
+* [SQL SELECT WHERE field contains words](https://stackoverflow.com/questions/14290857/sql-select-where-field-contains-words)
+* [Laravel get count on belongsToMany relationship](https://stackoverflow.com/questions/50345871/laravel-get-count-on-belongstomany-relationship)
+* [Laravel: How to Make Menu Item Active by URL/Route](https://quickadminpanel.com/blog/laravel-how-to-make-menu-item-active-by-urlroute/)
+* [Laravel Eloquent ORM - removing rows and all the child relationship, with event deleting](https://stackoverflow.com/questions/34989701/laravel-eloquent-orm-removing-rows-and-all-the-child-relationship-with-event)
+* [Deleting specific records from the pivot table](https://stackoverflow.com/questions/45908315/laravel-5-4-deleting-specific-records-from-the-pivot-table)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
-- [Earthlink](https://www.earthlink.ro/)
-- [Steadfast Collective](https://steadfastcollective.com/)
-- [We Are The Robots Inc.](https://watr.mx/)
-- [Understand.io](https://www.understand.io/)
-- [Abdel Elrafa](https://abdelelrafa.com)
-- [Hyper Host](https://hyper.host)
-- [Appoly](https://www.appoly.co.uk)
-- [OP.GG](https://op.gg)
-- [云软科技](http://www.yunruan.ltd/)
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
