@@ -38,7 +38,7 @@ Route::get('/restaurants/{restaurantSlug}/reviews/{id}/delete', 'ReviewControlle
 Route::delete('/restaurants/{restaurantSlug}/reviews/{id}', 'ReviewController@destroy');
 
 Route::post('/restaurants/{restaurantSlug}/reviews/{review}/replies', 'ReplyController@store');
-Route::get('/restaurants/{restaurantSlug}/reviews/{review}/replies/{reply}/delete', 'replyController@destroy');
+Route::get('/restaurants/{restaurantSlug}/reviews/{review}/replies/{reply}/delete', 'ReplyController@destroy');
 
 Route::get('/favorites', 'FavoritesController@show');
 Route::get('/favorites/{restaurantSlug}/add', 'FavoritesController@add');
