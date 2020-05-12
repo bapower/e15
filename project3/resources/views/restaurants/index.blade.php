@@ -13,6 +13,9 @@
                                 @if(!is_null($searchTerms))
                                     <p>{{ count($restaurants) }} restaurants found for search: <span>{{ $searchTerms }}</span></p>
                                     <p><a href="/restaurants">Browse all restaurants</a></p>
+                                @elseif(!is_null($filter))
+                                    <p>{{ count($restaurants) }} <span>{{$filter}}</span> restaurants found</p>
+                                    <p><a href="/restaurants">Browse all restaurants</a></p>
                                 @else
                                     <p>{{ count($restaurants) }} <span>Restaurants</span></p>
                                 @endif

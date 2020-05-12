@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Restaurant;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class RestaurantController extends Controller
@@ -19,6 +20,7 @@ class RestaurantController extends Controller
         return view('restaurants.index')->with([
             'restaurants' => $restaurants,
             'searchTerms' => session('searchTerms', null),
+            'filter' => session('filter', null),
         ]);
     }
 
@@ -52,6 +54,40 @@ class RestaurantController extends Controller
         return redirect('/restaurants')->with([
             'searchTerms' => $searchTerms,
             'searchedRestaurants' => $restaurants
+        ]);
+    }
+
+    /**
+     * GET
+     * /popular
+     * Show popular restaurants
+     * @param Request $request
+     * @return string
+     */
+    public function popular(Request $request)
+    {
+        $restaurants = Restaurant::where('rating', '>', '8')->get();
+
+        return redirect('/restaurants')->with([
+            'searchedRestaurants' => $restaurants,
+            'filter' => 'popular'
+        ]);
+    }
+
+    /**
+     * GET
+     * /recent
+     * Show recently added restaurants
+     * @param Request $request
+     * @return string
+     */
+    public function recent(Request $request)
+    {
+        $restaurants = Restaurant::where('created_at', '>', Carbon::now()->subDays(90))->get();
+
+        return redirect('/restaurants')->with([
+            'searchedRestaurants' => $restaurants,
+            'filter' => 'recent'
         ]);
     }
 }

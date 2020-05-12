@@ -22,6 +22,8 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/restaurants', 'RestaurantController@index');
+Route::get('/restaurants/popular', 'RestaurantController@popular');
+Route::get('/restaurants/recent', 'RestaurantController@recent');
 Route::get('/restaurants/{restaurantSlug}', 'RestaurantController@show');
 
 Route::get('/restaurants/{restaurantSlug}/reviews/create', 'ReviewController@create');

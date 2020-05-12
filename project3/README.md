@@ -7,6 +7,7 @@
 
 + Visitors can register/log in
 + Visitors can search for or browse restaurants
++ Vistors can browse restaurants by most popular or recently added
 + Visitors can read reviews and discussions about restaurants
 + Users can write reviews of restaurants
 + Users can update or delete reviews that they have written
