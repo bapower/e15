@@ -1,11 +1,3 @@
-/*------------------------------------------------------------------
-Theme Name: Listing & Directory Website Template
-Version: 1.0
-Author: Surjith S M
--------------------------------------------------------------------*/
-/* ==============================================================
-   GLOBAL STYLES
-   ============================================================== */
 body {
     font-family: 'Roboto', sans-serif; }
 
@@ -849,6 +841,22 @@ footer {
 .round-icon-orange {
     background: #ffbb27 !important; }
 
+.customer-rating.good {
+    background: #46cd38;
+}
+
+.customer-rating.ok {
+    background: #7bc773;
+}
+
+.customer-rating.not-good {
+    background: #FF8C00;
+}
+
+.customer-rating.bad {
+    background: #dc3543;
+}
+
 .customer-rating {
     background: #46cd38;
     padding: 8px 14px;
@@ -856,6 +864,7 @@ footer {
     font-size: 18px;
     color: #fff;
     border-radius: 3px; }
+
 @media (max-width: 576px) {
     .customer-rating {
         float: none;

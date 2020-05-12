@@ -82,7 +82,15 @@
                                                 <span class="round-icon-blank"></span>
                                                 <p>Reviewed {{ $review->created_at->diffForHumans() }}</p>
                                             </div>
-                                            <div class="customer-rating">{{ $review->rating }}</div>
+                                            @if($review->rating > 8)
+                                                <div class="customer-rating good">{{ $review->rating }}</div>
+                                            @elseif($review->rating > 6 && $review->rating < 9)
+                                                <div class="customer-rating ok">{{ $review->rating }}</div>
+                                            @elseif($review->rating > 3 && $review->rating < 7)
+                                                <div class="customer-rating not-good">{{ $review->rating }}</div>
+                                            @else
+                                                <div class="customer-rating bad">{{ $review->rating }}</div>
+                                            @endif
                                         </div>
                                         <p class="customer-text">{{ substr($review->body, 0, 100) }}...
                                             <a class="review-link" href="/restaurants/{{ $restaurant->slug }}/reviews/{{ $review->id }}/">read more</a>

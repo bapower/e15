@@ -28,7 +28,15 @@
                     <div class="booking-checkbox_wrap mt-4">
                         <h5>{{ $review->title }}</h5>
                         <p class="text-center">Reviewed by: {{ $review->author->name }} {{ $review->created_at->diffForHumans() }}</p>
-                        <div class="customer-rating py-1">{{ $review->rating }}</div>
+                        @if($review->rating > 8)
+                            <div class="customer-rating py-1 good">{{ $review->rating }}</div>
+                        @elseif($review->rating > 6 && $review->rating < 9)
+                            <div class="customer-rating py-1 ok">{{ $review->rating }}</div>
+                        @elseif($review->rating > 3 && $review->rating < 7)
+                            <div class="customer-rating py-1 not-good">{{ $review->rating }}</div>
+                        @else
+                            <div class="customer-rating py-1 bad">{{ $review->rating }}</div>
+                        @endif
                         @if (!is_null(auth()->user()) && auth()->user()->id === $review->user_id)
                             <div class="text-center author-actions">
                                 <a href="/restaurants/{{ $restaurant->slug }}/reviews/{{ $review->id }}/edit" dusk="edit-review"><i class="fa fa-edit"></i> Edit</a>&nbsp;&nbsp;&nbsp;
