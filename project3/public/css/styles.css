@@ -618,12 +618,6 @@ footer {
         -ms-flex: 100%;
         flex: 100%; } }
 
-/*
-   BOOKING PAGE
-   */
-/* ==============================================================
-   RESERVE A SEAT
-   ============================================================== */
 .reserve-block {
     padding: 30px 0; }
 .reserve-block h5 {
@@ -662,7 +656,23 @@ footer {
     .reserve-seat-block {
         text-align: center; } }
 
-.reserve-rating {
+.restaurant-rating.good {
+    background: #46cd38;
+}
+
+.restaurant-rating.ok {
+    background: #7bc773;
+}
+
+.restaurant-rating.not-good {
+    background: #FF8C00;
+}
+
+.restaurant-rating.bad {
+    background: #dc3543;
+}
+
+.restaurant-rating {
     font-size: 23px;
     background: #46cd38;
     padding: 10px 14px;

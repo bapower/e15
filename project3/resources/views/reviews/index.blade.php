@@ -20,9 +20,23 @@
                 </div>
                 <div class="col-md-6">
                     <div class="reserve-seat-block">
-                        <div class="reserve-rating">
-                            <span>{{ $restaurant->rating }}</span>
-                        </div>
+                        @if($restaurant->rating > 8)
+                            <div class="restaurant-rating good">
+                                <span>{{ $restaurant->rating }}</span>
+                            </div>
+                        @elseif($restaurant->rating > 6 && $restaurant->rating < 9)
+                            <div class="restaurant-rating ok">
+                                <span>{{ $restaurant->rating }}</span>
+                            </div>
+                        @elseif($restaurant->rating > 3 && $restaurant->rating < 7)
+                            <div class="restaurant-rating not-good">
+                                <span>{{ $restaurant->rating }}</span>
+                            </div>
+                        @else
+                            <div class="restaurant-rating bad">
+                                <span>{{ $restaurant->rating }}</span>
+                            </div>
+                        @endif
                         <div class="review-btn">
                             <a href="/restaurants/{{ $restaurant->slug }}/reviews/create" class="btn btn-outline-danger">WRITE A REVIEW</a>
                             <span>{{ count($restaurant->reviews) }} reviews</span>
