@@ -62,6 +62,7 @@ class ReviewController extends Controller
             'restaurant_id' => $restaurant->id,
             'title' => request('title'),
             'body' => request('body'),
+            'helpful' => 0,
             'rating' => request('rating'),
             'image' => request('image')
         ]);
