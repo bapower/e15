@@ -48,11 +48,14 @@ class ReviewController extends Controller
     public function store(string $slug)
     {
         $restaurant = Restaurant::where('slug', '=', $slug)->first();
+        $imageName = time().'.'.request()->image->getClientOriginalExtension();
+        request()->image->move(public_path('images'), $imageName);
 
         $this->validate(request(), [
             'title' => 'required',
             'body' => 'required',
-            'rating' => 'required'
+            'rating' => 'required',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
         $review = Review::create([
             'user_id' => auth()->id(),
