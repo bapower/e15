@@ -24,20 +24,20 @@
                             <span>{{ $restaurant->rating }}</span>
                         </div>
                         <div class="review-btn">
-                            <a href=" http://localhost/e15/project3/public/restaurants/{{ $restaurant->slug }}/reviews/create" class="btn btn-outline-danger">WRITE A REVIEW</a>
+                            <a href=" /restaurants/{{ $restaurant->slug }}/reviews/create" class="btn btn-outline-danger">WRITE A REVIEW</a>
                             <span>{{ count($restaurant->reviews) }}  reviews</span>
                         </div>
                         @if (auth()->check())
                             @if (auth()->user()->restaurants()->find($restaurant->id))
                                 <div class="reserve-btn">
                                     <div class="featured-btn-wrap">
-                                        <a href="http://localhost/e15/project3/public/favorites/{{ $restaurant->slug }}/destroy" dusk="remove-favorite-restaurant" class="btn btn-danger"><span class="fa fa-trash"></span> REMOVE FROM FAVORITES</a>
+                                        <a href="/favorites/{{ $restaurant->slug }}/destroy" dusk="remove-favorite-restaurant" class="btn btn-danger"><span class="fa fa-trash"></span> REMOVE FROM FAVORITES</a>
                                     </div>
                                 </div>
                             @else
                                 <div class="reserve-btn">
                                     <div class="featured-btn-wrap">
-                                        <a href="http://localhost/e15/project3/public/favorites/{{ $restaurant->slug }}/add" dusk="favorites-button-restaurant" class="btn btn-danger"><span class="fa fa-heart-o"></span> ADD TO FAVORITES</a>
+                                        <a href="/favorites/{{ $restaurant->slug }}/add" dusk="favorites-button-restaurant" class="btn btn-danger"><span class="fa fa-heart-o"></span> ADD TO FAVORITES</a>
                                     </div>
                                 </div>
                             @endif
@@ -60,18 +60,18 @@
                     @if(count($restaurant->reviews) > 0)
                         <div class="booking-checkbox_wrap mt-4">
                             <h5>{{ count($restaurant->reviews) }} Reviews</h5>
-                            <p class="text-center"><a href="http://localhost/e15/project3/public/restaurants/{{ $restaurant->slug }}/reviews">Read reviews for {{ $restaurant->name }}</a></p>
+                            <p class="text-center"><a href="/restaurants/{{ $restaurant->slug }}/reviews">Read reviews for {{ $restaurant->name }}</a></p>
                         </div>
                     @else
                         <div class="booking-checkbox_wrap mt-4 text-center">
                             <p>{{ $restaurant->name }} doesn't have any reviews yet</p>
-                            <p><a href="http://localhost/e15/project3/public/restaurants/{{ $restaurant->slug }}/reviews/create" dusk="write-restaurant-review">Write a review</a></p>
+                            <p><a href="/restaurants/{{ $restaurant->slug }}/reviews/create" dusk="write-restaurant-review">Write a review</a></p>
                         </div>
                     @endif
                 </div>
                 <div class="col-md-4 responsive-wrap">
                     <div class="contact-info">
-                        <img src="http://localhost/e15/project3/public/images/restaurants/map.jpg" class="img-fluid" alt="#">
+                        <img src="/images/restaurants/map.jpg" class="img-fluid" alt="#">
                         <div class="address">
                             <span class="fa fa-map-marker"></span>
                             <p>{{ $restaurant->street_address }}<br> {{ $restaurant->city }}, {{ $restaurant->state }} {{ $restaurant->post_code }}</p>

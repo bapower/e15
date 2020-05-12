@@ -5,7 +5,7 @@
         @if (!is_null(auth()->user()) && auth()->user()->id === $reply->user_id)
             <div class="bottom-icons">
                 <p>
-                    <a href="http://localhost/e15/project3/public/restaurants/{{ $restaurant->slug }}/reviews/{{ $review->id }}/delete" dusk="delete-reply"><i class="fa fa-trash"></i> Delete</a>
+                    <a href="/restaurants/{{ $restaurant->slug }}/reviews/{{ $review->id }}/delete" dusk="delete-reply"><i class="fa fa-trash"></i> Delete</a>
                 </p>
             </div>
         @endif

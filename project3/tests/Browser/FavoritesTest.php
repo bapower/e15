@@ -18,7 +18,7 @@ class FavoritesTest extends DuskTestCase
     public function testCantSeeFavoritesNotLoggedIn()
     {
         $this->browse(function (Browser $browser) {
-            $browser->visit('http://localhost/e15/project3/public/')
+            $browser->visit('/')
                 ->assertSee('Login');
         });
     }
@@ -33,7 +33,7 @@ class FavoritesTest extends DuskTestCase
         $this->browse(function (Browser $browser) {
             $user = factory(User::class)->create();
             $browser->loginAs($user->id)
-                ->visit('http://localhost/e15/project3/public/favorites')
+                ->visit('/favorites')
                 ->assertSee('You have not added any restaurants to your favorites yet.');
         });
     }

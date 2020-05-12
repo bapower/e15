@@ -9,7 +9,7 @@
                 <div class="featured-responsive">
                     <div class="detail-filter-text">
                         <p>You have not added any restaurants to your favorites yet.</p>
-                        <p><a href='http://localhost/e15/project3/public/restaurants'>Find and review restaurants</a></p>
+                        <p><a href='/restaurants'>Find and review restaurants</a></p>
                     </div>
                 </div>
             </div>
@@ -22,7 +22,7 @@
                                 @foreach ($restaurants as $i => $restaurant)
                                     <div class="col-sm-6 col-lg-12 col-xl-4 featured-responsive">
                                         <div class="featured-place-wrap">
-                                            <a href="http://localhost/e15/project3/public/restaurants/{{ $restaurant->slug }}">
+                                            <a href="/restaurants/{{ $restaurant->slug }}">
                                                 <img src="http://localhost/e15/project3/public{{ $restaurant->image }}" class="img-fluid" alt="{{ $restaurant->name }}">
                                                 <span class="featured-rating-orange ">{{ $restaurant->rating }}</span>
                                                 <div class="featured-title-box">
@@ -43,7 +43,7 @@
                                                     </ul>
                                                     <div class="card-footer">
                                                         <p>Added to your favorites {{ $restaurant->pivot->created_at->diffForHumans() }}</p>
-                                                        <p><a href="http://localhost/e15/project3/public/favorites/{{ $restaurant->slug }}/destroy" dusk="remove-favorite-page"><i class="fa fa-trash"></i> Remove from Favorites</a></p>
+                                                        <p><a href="/favorites/{{ $restaurant->slug }}/destroy" dusk="remove-favorite-page"><i class="fa fa-trash"></i> Remove from Favorites</a></p>
                                                     </div>
                                                 </div>
                                             </a>

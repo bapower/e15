@@ -21,7 +21,7 @@
                         </div>
                         <div class="row d-flex justify-content-center">
                             <div class="col-md-10">
-                                <form class="form-wrap mt-4" method='GET' action='http://localhost/e15/project3/public/search'>
+                                <form class="form-wrap mt-4" method='GET' action='/search'>
                                     <div class="btn-group" role="group">
                                         <input type="text" name='searchTerms' placeholder="Search for a restaurant" class="btn-group1">
                                         <button type="submit" dusk="search-button" class="btn-form"><span class="icon-magnifier search-icon"></span>SEARCH<i class="pe-7s-angle-right"></i></button>

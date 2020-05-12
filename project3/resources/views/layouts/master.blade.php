@@ -39,17 +39,17 @@
                         <div class="row dark-bg">
                             <div class="col-md-12">
                                 <nav class="navbar navbar-expand-lg navbar-light">
-                                    <a class="navbar-brand" href="http://localhost/e15/project3/public/">Food For Thought</a>
+                                    <a class="navbar-brand" href="/">Food For Thought</a>
                                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                                         <span class="icon-menu"></span>
                                     </button>
                                     <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
                                         <ul class="navbar-nav">
                                             <li class="nav-item {{ (request()->is('restaurants')) ? 'active' : '' }}">
-                                                <a class="nav-link" href="http://localhost/e15/project3/public/restaurants">Browse Restaurants</a>
+                                                <a class="nav-link" href="/restaurants">Browse Restaurants</a>
                                             </li>
                                             <li class="nav-item {{ (request()->is('favorites')) ? 'active' : '' }}">
-                                                <a class="nav-link" href="http://localhost/e15/project3/public/favorites">Favorites</a>
+                                                <a class="nav-link" href="/favorites">Favorites</a>
                                             </li>
 
 

@@ -16,7 +16,7 @@ class AuthTest extends DuskTestCase
     public function testRegistration(): void
     {
         $this->browse(function (Browser $browser) {
-            $browser->visit('http://localhost/e15/project3/public/register')
+            $browser->visit('/register')
                     ->assertSee('Register')
                     ->type('name', 'Dolores Woolley')
                     ->type('email', 'dolores' . time() . '@gmail.com')
@@ -35,7 +35,7 @@ class AuthTest extends DuskTestCase
     public function testLogOut(): void
     {
         $this->browse(function (Browser $browser) {
-            $browser->visit('http://localhost/e15/project3/public/')
+            $browser->visit('/')
                 ->click('#navbarDropdown')
                 ->click('@logout-link')
                 ->assertSee('Login');
@@ -50,7 +50,7 @@ class AuthTest extends DuskTestCase
     public function testFailedRegistration(): void
     {
         $this->browse(function (Browser $browser) {
-            $browser->visit('http://localhost/e15/project3/public/register')
+            $browser->visit('/register')
                 ->type('name', 'Dolores Woolley')
                 ->type('email', 'dolores' . time() . '@gmail.com')
                 ->type('password', '123')

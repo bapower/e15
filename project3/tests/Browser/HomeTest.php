@@ -16,7 +16,7 @@ class ExampleTest extends DuskTestCase
     public function testBasicExample()
     {
         $this->browse(function (Browser $browser) {
-            $browser->visit('http://localhost/e15/project3/public/')
+            $browser->visit('/')
                     ->assertSee('Food For Thought');
 
         });

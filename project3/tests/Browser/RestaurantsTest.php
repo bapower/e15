@@ -18,7 +18,7 @@ class RestaurantsTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
             $restaurant = factory(Restaurant::class)->create();
-            $browser->visit('http://localhost/e15/project3/public/restaurants')
+            $browser->visit('/restaurants')
                     ->assertSee($restaurant->name);
         });
     }
@@ -32,7 +32,7 @@ class RestaurantsTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
             $restaurant = factory(Restaurant::class)->create();
-            $browser->visit('http://localhost/e15/project3/public/restaurants/'.$restaurant->slug)
+            $browser->visit('/restaurants/'.$restaurant->slug)
                 ->assertSee($restaurant->name);
         });
     }
@@ -46,7 +46,7 @@ class RestaurantsTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
             $restaurant = factory(Restaurant::class)->create();
-            $browser->visit('http://localhost/e15/project3/public/')
+            $browser->visit('/')
                 ->type('searchTerms', $restaurant->name)
                 ->click('@search-button')
                 ->assertSee($restaurant->name);
@@ -61,7 +61,7 @@ class RestaurantsTest extends DuskTestCase
     public function testSearchForRestaurantNotFound()
     {
         $this->browse(function (Browser $browser) {
-            $browser->visit('http://localhost/e15/project3/public/')
+            $browser->visit('/')
                 ->type('searchTerms', 'Not a restaurant')
                 ->click('@search-button')
                 ->assertSee('0 restaurants found for search');

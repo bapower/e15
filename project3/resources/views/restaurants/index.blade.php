@@ -12,7 +12,7 @@
                             <div class="detail-filter-text">
                                 @if(!is_null($searchTerms))
                                     <p>{{ count($restaurants) }} restaurants found for search: <span>{{ $searchTerms }}</span></p>
-                                    <p><a href="http://localhost/e15/project3/public/restaurants">Browse all restaurants</a></p>
+                                    <p><a href="/restaurants">Browse all restaurants</a></p>
                                 @else
                                     <p>{{ count($restaurants) }} <span>Restaurants</span></p>
                                 @endif
@@ -23,7 +23,7 @@
                         @foreach ($restaurants as $i => $restaurant)
                             <div class="col-sm-6 col-lg-12 col-xl-4 featured-responsive">
                             <div class="featured-place-wrap">
-                                <a href="http://localhost/e15/project3/public/restaurants/{{ $restaurant->slug }}">
+                                <a href="/restaurants/{{ $restaurant->slug }}">
                                     <img src="http://localhost/e15/project3/public{{ $restaurant->image }}" class="img-fluid" alt="{{ $restaurant->name }}">
                                     <span class="featured-rating-orange ">{{ $restaurant->rating }}</span>
                                     <div class="featured-title-box">

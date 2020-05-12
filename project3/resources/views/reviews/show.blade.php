@@ -13,8 +13,8 @@
                         <div class="customer-rating py-1">{{ $review->rating }}</div>
                         @if (!is_null(auth()->user()) && auth()->user()->id === $review->user_id)
                             <div class="text-center author-actions">
-                                <a href="http://localhost/e15/project3/public/restaurants/{{ $restaurant->slug }}/reviews/{{ $review->id }}/edit" dusk="edit-review"><i class="fa fa-edit"></i> Edit</a>&nbsp;&nbsp;&nbsp;
-                                <a href="http://localhost/e15/project3/public/restaurants/{{ $restaurant->slug }}/reviews/{{ $review->id }}/delete" dusk="delete-review"><i class="fa fa-trash"></i> Delete</a>
+                                <a href="/restaurants/{{ $restaurant->slug }}/reviews/{{ $review->id }}/edit" dusk="edit-review"><i class="fa fa-edit"></i> Edit</a>&nbsp;&nbsp;&nbsp;
+                                <a href="/restaurants/{{ $restaurant->slug }}/reviews/{{ $review->id }}/delete" dusk="delete-review"><i class="fa fa-trash"></i> Delete</a>
                             </div>
                         @endif
                         <hr>

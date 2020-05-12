@@ -24,20 +24,20 @@
                             <span>{{ $restaurant->rating }}</span>
                         </div>
                         <div class="review-btn">
-                            <a href="http://localhost/e15/project3/public/restaurants/{{ $restaurant->slug }}/reviews/create" class="btn btn-outline-danger">WRITE A REVIEW</a>
+                            <a href="/restaurants/{{ $restaurant->slug }}/reviews/create" class="btn btn-outline-danger">WRITE A REVIEW</a>
                             <span>{{ count($restaurant->reviews) }} reviews</span>
                         </div>
                         @if (auth()->check())
                             @if (auth()->user()->restaurants()->find($restaurant->id))
                                 <div class="reserve-btn">
                                     <div class="featured-btn-wrap">
-                                        <a href="http://localhost/e15/project3/public/favorites/{{ $restaurant->slug }}/destroy" class="btn btn-danger"><span class="fa fa-trash"></span> REMOVE FROM FAVORITES</a>
+                                        <a href="/favorites/{{ $restaurant->slug }}/destroy" class="btn btn-danger"><span class="fa fa-trash"></span> REMOVE FROM FAVORITES</a>
                                     </div>
                                 </div>
                             @else
                                 <div class="reserve-btn">
                                     <div class="featured-btn-wrap">
-                                        <a href="http://localhost/e15/project3/public/favorites/{{ $restaurant->slug }}/add" class="btn btn-danger"><span class="fa fa-heart-o"></span> ADD TO FAVORITES</a>
+                                        <a href="/favorites/{{ $restaurant->slug }}/add" class="btn btn-danger"><span class="fa fa-heart-o"></span> ADD TO FAVORITES</a>
                                     </div>
                                 </div>
                             @endif
@@ -63,10 +63,10 @@
                                         @if (!is_null(auth()->user()) && auth()->user()->id === $review->user_id)
                                             <div class="bottom-icons">
                                                 <p>
-                                                    <a href="http://localhost/e15/project3/public/restaurants/{{ $restaurant->slug }}/reviews/{{ $review->id }}/edit"><i class="fa fa-edit"></i> Edit</a>
+                                                    <a href="/restaurants/{{ $restaurant->slug }}/reviews/{{ $review->id }}/edit"><i class="fa fa-edit"></i> Edit</a>
                                                 </p>
                                                 <p>
-                                                    <a href="http://localhost/e15/project3/public/restaurants/{{ $restaurant->slug }}/reviews/{{ $review->id }}/delete"><i class="fa fa-trash"></i> Delete</a>
+                                                    <a href="/restaurants/{{ $restaurant->slug }}/reviews/{{ $review->id }}/delete"><i class="fa fa-trash"></i> Delete</a>
                                                 </p>
                                             </div>
                                         @endif
@@ -85,7 +85,7 @@
                                             <div class="customer-rating">{{ $review->rating }}</div>
                                         </div>
                                         <p class="customer-text">{{ substr($review->body, 0, 100) }}...
-                                            <a class="review-link" href="http://localhost/e15/project3/public/restaurants/{{ $restaurant->slug }}/reviews/{{ $review->id }}/">read more</a>
+                                            <a class="review-link" href="/restaurants/{{ $restaurant->slug }}/reviews/{{ $review->id }}/">read more</a>
                                         </p>
                                         <ul>
                                             <li><img src="images/review-img1.jpg" class="img-fluid" alt="#"></li>
@@ -98,7 +98,7 @@
                                 <hr>
                             @endforeach
                         @else
-                            <a href="http://localhost/e15/project3/public/restaurants/{{ $restaurant->slug }}/reviews/create">Write a review</a>
+                            <a href="/restaurants/{{ $restaurant->slug }}/reviews/create">Write a review</a>
                         @endif
                     </div>
                 </div>
