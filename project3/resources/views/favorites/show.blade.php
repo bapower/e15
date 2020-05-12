@@ -23,7 +23,7 @@
                                     <div class="col-sm-6 col-lg-12 col-xl-4 featured-responsive">
                                         <div class="featured-place-wrap">
                                             <a href="/restaurants/{{ $restaurant->slug }}">
-                                                <img src="http://localhost/e15/project3/public{{ $restaurant->image }}" class="img-fluid" alt="{{ $restaurant->name }}">
+                                                <img src="{{ $restaurant->image }}" class="img-fluid" alt="{{ $restaurant->name }}">
                                                 <span class="featured-rating-orange ">{{ $restaurant->rating }}</span>
                                                 <div class="featured-title-box">
                                                     <h6>{{ $restaurant->name }}</h6>

@@ -5,7 +5,7 @@
 @section('content')
     <div>
         <div class="banner-container text-center">
-            <img src="http://localhost/e15/project3/public{{ $restaurant->image }}" class="img-fluid" alt="{{ $restaurant->name }}">
+            <img src="{{ $restaurant->image }}" class="img-fluid" alt="{{ $restaurant->name }}">
         </div>
     </div>
     <section class="reserve-block">

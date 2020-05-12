@@ -20,7 +20,7 @@ class ReviewsTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
             $restaurant = factory(Restaurant::class)->create();
-            $browser->visit('http://localhost/e15/project3/public/restaurants/'.$restaurant->slug)
+            $browser->visit('/restaurants/'.$restaurant->slug)
                 ->press('@write-restaurant-review')
                 ->assertSee('Login');
         });
@@ -37,7 +37,7 @@ class ReviewsTest extends DuskTestCase
             $user = factory(User::class)->create();
             $restaurant = factory(Restaurant::class)->create();
             $browser->loginAs($user->id)
-                ->visit('http://localhost/e15/project3/public/restaurants/'.$restaurant->slug)
+                ->visit('/restaurants/'.$restaurant->slug)
                 ->press('@write-restaurant-review')
                 ->assertSee('Write a review for '.$restaurant->name)
                 ->type('title', 'A review title')
@@ -60,7 +60,7 @@ With my them if up many. Lain week nay she them her she. Extremity so attending 
             $user = factory(User::class)->create();
             $restaurant = factory(Restaurant::class)->create();
             $browser->loginAs($user->id)
-                ->visit('http://localhost/e15/project3/public/restaurants/'.$restaurant->slug)
+                ->visit('/restaurants/'.$restaurant->slug)
                 ->press('@write-restaurant-review')
                 ->assertSee('Write a review for '.$restaurant->name)
                 ->type('title', 'A review title')
@@ -81,7 +81,7 @@ With my them if up many. Lain week nay she them her she. Extremity so attending 
         $this->browse(function (Browser $browser) {
             $review = factory(Review::class)->create();
             $browser->loginAs($review->author->id)
-                ->visit('http://localhost/e15/project3/public/restaurants/'.$review->restaurant->slug .'/reviews/'.$review->id)
+                ->visit('/restaurants/'.$review->restaurant->slug .'/reviews/'.$review->id)
                 ->press('@edit-review')
                 ->assertInputValue('title', $review->title)
                 ->type('title', 'A different title')
@@ -100,7 +100,7 @@ With my them if up many. Lain week nay she them her she. Extremity so attending 
         $this->browse(function (Browser $browser) {
             $review = factory(Review::class)->create();
             $browser->loginAs($review->author->id)
-                ->visit('http://localhost/e15/project3/public/restaurants/'.$review->restaurant->slug .'/reviews/'.$review->id)
+                ->visit('/restaurants/'.$review->restaurant->slug .'/reviews/'.$review->id)
                 ->press('@edit-review')
                 ->assertInputValue('title', $review->title)
                 ->type('title', '')
@@ -119,7 +119,7 @@ With my them if up many. Lain week nay she them her she. Extremity so attending 
         $this->browse(function (Browser $browser) {
             $review = factory(Review::class)->create();
             $browser->loginAs($review->author->id)
-                ->visit('http://localhost/e15/project3/public/restaurants/'.$review->restaurant->slug .'/reviews/'.$review->id)
+                ->visit('/restaurants/'.$review->restaurant->slug .'/reviews/'.$review->id)
                 ->press('@delete-review')
                 ->assertSee('Confirm delete review')
                 ->press('@confirm-delete')

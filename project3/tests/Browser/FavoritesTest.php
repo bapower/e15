@@ -49,7 +49,7 @@ class FavoritesTest extends DuskTestCase
             $user = factory(User::class)->create();
             $restaurant = factory(Restaurant::class)->create();
             $browser->loginAs($user->id)
-                ->visit('http://localhost/e15/project3/public/restaurants/'.$restaurant->slug)
+                ->visit('/restaurants/'.$restaurant->slug)
                 ->click('@favorites-button-restaurant')
                 ->assertSee($restaurant->name);
         });
@@ -66,7 +66,7 @@ class FavoritesTest extends DuskTestCase
             $user = factory(User::class)->state('withRestaurant')->create();
             $restaurant = $user->restaurants()->first();
             $browser->loginAs($user->id)
-                ->visit('http://localhost/e15/project3/public/favorites')
+                ->visit('/favorites')
                 ->assertSee($restaurant->name)
                 ->click('@remove-favorite-page')
                 ->assertSee('You have not added any restaurants to your favorites yet.');
@@ -84,7 +84,7 @@ class FavoritesTest extends DuskTestCase
             $user = factory(User::class)->state('withRestaurant')->create();
             $restaurant = $user->restaurants()->first();
             $browser->loginAs($user->id)
-                ->visit('http://localhost/e15/project3/public/restaurants/'.$restaurant->slug)
+                ->visit('/restaurants/'.$restaurant->slug)
                 ->assertSee($restaurant->name)
                 ->click('@remove-favorite-restaurant')
                 ->waitFor('.detail-filter-text')
