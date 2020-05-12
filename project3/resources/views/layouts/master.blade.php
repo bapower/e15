@@ -39,7 +39,7 @@
                                 <nav class="navbar navbar-expand-lg navbar-light">
                                     <a class="navbar-brand" href="/">Food For Thought</a>
                                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                                        <span class="icon-menu"></span>
+                                        <span class="fa fa-bars"></span>
                                     </button>
                                     <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
                                         <ul class="navbar-nav">

@@ -30,13 +30,13 @@
                                                     <p>{{ count($restaurant->reviews) }} Reviews</p> <span> • </span>
                                                     <p><span>{{ str_repeat('$', $restaurant->cost_rating) }}</span>{{ str_repeat('$', 5-$restaurant->cost_rating) }}</p>
                                                     <ul>
-                                                        <li><span class="icon-location-pin"></span>
+                                                        <li><span class="fa fa-map-marker"></span>
                                                             <p>{{ $restaurant->street_address }}, {{ $restaurant->city }}, {{ $restaurant->state }}  {{ $restaurant->post_code }}</p>
                                                         </li>
-                                                        <li><span class="icon-screen-smartphone"></span>
+                                                        <li><span class="fa fa-mobile"></span>
                                                             <p>{{ $restaurant->phone_number }}</p>
                                                         </li>
-                                                        <li><span class="icon-link"></span>
+                                                        <li><span class="fa fa-link"></span>
                                                             <p>{{ $restaurant->url }}</p>
                                                         </li>
 
