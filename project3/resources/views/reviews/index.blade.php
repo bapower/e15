@@ -89,11 +89,6 @@
                                         <div class="customer-content">
                                             <div class="customer-review">
                                                 <h6>{{ $review->title }}</h6>
-                                                <span></span>
-                                                <span></span>
-                                                <span></span>
-                                                <span></span>
-                                                <span class="round-icon-blank"></span>
                                                 <p>Reviewed {{ $review->created_at->diffForHumans() }}</p>
                                             </div>
                                             @if($review->rating > 8)
