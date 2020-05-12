@@ -2,6 +2,7 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
+use App\Restaurant;
 use App\User;
 use Faker\Generator as Faker;
 use Illuminate\Support\Str;
@@ -27,4 +28,10 @@ $factory->define(User::class, function (Faker $faker) {
         'created_at' => $faker->dateTimeThisDecade(),
         'updated_at' => $faker->dateTimeThisDecade()
     ];
+});
+
+$factory->state(User::class, 'withRestaurant', []);
+$factory->afterCreatingState(User::class, 'withRestaurant', function ($user) {
+    $restaurant = factory(Restaurant::class)->create();
+    $user->restaurants()->sync([$restaurant->id]);
 });

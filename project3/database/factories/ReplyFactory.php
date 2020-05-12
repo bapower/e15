@@ -10,7 +10,7 @@ use Faker\Generator as Faker;
 $factory->define(Reply::class, function (Faker $faker) {
     return [
         'user_id' => function () {
-            return factory(User::class)->make();
+            return factory(User::class)->create()->id;
         },
         'review_id' => function () {
             return factory(Review::class)->create()->id;

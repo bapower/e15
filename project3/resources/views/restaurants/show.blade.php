@@ -31,13 +31,13 @@
                             @if (auth()->user()->restaurants()->find($restaurant->id))
                                 <div class="reserve-btn">
                                     <div class="featured-btn-wrap">
-                                        <a href="http://localhost/e15/project3/public/favorites/{{ $restaurant->slug }}/destroy" class="btn btn-danger"><span class="fa fa-trash"></span> REMOVE FROM FAVORITES</a>
+                                        <a href="http://localhost/e15/project3/public/favorites/{{ $restaurant->slug }}/destroy" dusk="remove-favorite-restaurant" class="btn btn-danger"><span class="fa fa-trash"></span> REMOVE FROM FAVORITES</a>
                                     </div>
                                 </div>
                             @else
                                 <div class="reserve-btn">
                                     <div class="featured-btn-wrap">
-                                        <a href="http://localhost/e15/project3/public/favorites/{{ $restaurant->slug }}/add" class="btn btn-danger"><span class="fa fa-heart-o"></span> ADD TO FAVORITES</a>
+                                        <a href="http://localhost/e15/project3/public/favorites/{{ $restaurant->slug }}/add" dusk="favorites-button-restaurant" class="btn btn-danger"><span class="fa fa-heart-o"></span> ADD TO FAVORITES</a>
                                     </div>
                                 </div>
                             @endif
@@ -65,7 +65,7 @@
                     @else
                         <div class="booking-checkbox_wrap mt-4 text-center">
                             <p>{{ $restaurant->name }} doesn't have any reviews yet</p>
-                            <p><a href="http://localhost/e15/project3/public/restaurants/{{ $restaurant->slug }}/reviews/create">Write a review</a></p>
+                            <p><a href="http://localhost/e15/project3/public/restaurants/{{ $restaurant->slug }}/reviews/create" dusk="write-restaurant-review">Write a review</a></p>
                         </div>
                     @endif
                 </div>

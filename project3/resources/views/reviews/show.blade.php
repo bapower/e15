@@ -13,8 +13,8 @@
                         <div class="customer-rating py-1">{{ $review->rating }}</div>
                         @if (!is_null(auth()->user()) && auth()->user()->id === $review->user_id)
                             <div class="text-center author-actions">
-                                <a href="http://localhost/e15/project3/public/restaurants/{{ $restaurant->slug }}/reviews/{{ $review->id }}/edit"><i class="fa fa-edit"></i> Edit</a>&nbsp;&nbsp;&nbsp;
-                                <a href="http://localhost/e15/project3/public/restaurants/{{ $restaurant->slug }}/reviews/{{ $review->id }}/delete"><i class="fa fa-trash"></i> Delete</a>
+                                <a href="http://localhost/e15/project3/public/restaurants/{{ $restaurant->slug }}/reviews/{{ $review->id }}/edit" dusk="edit-review"><i class="fa fa-edit"></i> Edit</a>&nbsp;&nbsp;&nbsp;
+                                <a href="http://localhost/e15/project3/public/restaurants/{{ $restaurant->slug }}/reviews/{{ $review->id }}/delete" dusk="delete-review"><i class="fa fa-trash"></i> Delete</a>
                             </div>
                         @endif
                         <hr>
@@ -60,7 +60,7 @@
                                         <textarea name="body" id="body" cols="30" rows="5" class="form-control" placeholder="Have a reply?">{{ old('body') }}</textarea>
                                         @include('includes.error-field', ['fieldName' => 'body'])
                                     </div>
-                                    <button type="submit" class="btn btn-primary">Post</button>
+                                    <button type="submit" class="btn btn-primary" dusk="post-reply">Post</button>
 
                                 </form>
                             </div>

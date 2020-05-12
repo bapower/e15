@@ -18,14 +18,7 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-md-12 responsive-wrap">
-                            <div class="row detail-filter-wrap">
-                                <div class="col-md-4 featured-responsive">
-                                    <div class="detail-filter-text">
-                                        <p>34 Results For <span>Restaurants</span></p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row light-bg detail-options-wrap">
+                            <div class="row light-bg detail-options-wrap mt-5">
                                 @foreach ($restaurants as $i => $restaurant)
                                     <div class="col-sm-6 col-lg-12 col-xl-4 featured-responsive">
                                         <div class="featured-place-wrap">
@@ -50,7 +43,7 @@
                                                     </ul>
                                                     <div class="card-footer">
                                                         <p>Added to your favorites {{ $restaurant->pivot->created_at->diffForHumans() }}</p>
-                                                        <p><a href="http://localhost/e15/project3/public/favorites/{{ $restaurant->slug }}/destroy"><i class="fa fa-trash"></i> Remove from Favorites</a></p>
+                                                        <p><a href="http://localhost/e15/project3/public/favorites/{{ $restaurant->slug }}/destroy" dusk="remove-favorite-page"><i class="fa fa-trash"></i> Remove from Favorites</a></p>
                                                     </div>
                                                 </div>
                                             </a>

@@ -12,4 +12,9 @@ class Reply extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
+
+    public function review()
+    {
+        return $this->belongsTo(Review::class, 'review_id');
+    }
 }

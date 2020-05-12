@@ -48,7 +48,7 @@
                                             @include('includes.error-field', ['fieldName' => 'image'])
                                         </div>
                                         <div class="featured-btn-wrap">
-                                            <button type="submit" class="btn btn-danger">Publish</button>
+                                            <button type="submit" class="btn btn-danger" dusk="publish-review">Publish</button>
                                         </div>
                                     </form>
                                 </div>

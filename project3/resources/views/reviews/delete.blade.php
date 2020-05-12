@@ -16,7 +16,7 @@
                                     <form method='POST' action='http://localhost/e15/project3/public/restaurants/{{ $restaurant->slug }}/reviews/{{ $review->id }}'>
                                         {{ method_field('delete') }}
                                         {{ csrf_field() }}
-                                        <input type='submit' value='Yes I am sure' class='btn btn-danger btn-small'>
+                                        <input type='submit' value='Yes I am sure' class='btn btn-danger btn-small' dusk="confirm-delete">
                                     </form>
                                     <div class="mt-3">
                                         <a href="http://localhost/e15/project3/public/restaurants/{{ $restaurant->slug }}/reviews/{{ $review->id }}">No I changed my mind</a>
