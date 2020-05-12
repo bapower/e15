@@ -42,7 +42,7 @@
                                             </li>
                                         </ul>
                                         <div class="bottom-icons">
-                                            @if(auth()->check)
+                                            @if(auth()->check())
                                                 @if(auth()->user()->restaurants->contains($restaurant))
                                                     <span class="fa fa-heart"></span>
                                                 @else
