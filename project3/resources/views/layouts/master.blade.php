@@ -29,7 +29,8 @@
 <body>
     <div id="app">
         @if(session('flash-alert'))
-            <div class='flash-alert'>
+            {{ session('flash-alert') }}
+            <div class="alert alert-primary mt-5 text-center" role="alert">
                 {{ session('flash-alert') }}
             </div>
         @endif
