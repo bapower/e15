@@ -15,8 +15,8 @@ $factory->define(Reply::class, function (Faker $faker) {
         'review_id' => function () {
             return factory(Review::class)->create()->id;
         },
-        'body' => $faker->paragraph(),
-        'created_at' => $faker->dateTimeThisDecade(),
-        'updated_at' => $faker->dateTimeThisDecade()
+        'body' => $faker->paragraphs(rand(1,3), true),
+        'created_at' => $faker->dateTimeThisMonth(),
+        'updated_at' => $faker->dateTimeThisMonth()
     ];
 });

@@ -14,31 +14,12 @@ class RestaurantController extends Controller
      */
     public function index()
     {
-        $restaurants = Restaurant::latest()->get();
+        $searchedRestaurants = session('searchedRestaurants', null);
+        $restaurants = is_null($searchedRestaurants) ? Restaurant::latest()->get() : $searchedRestaurants;
         return view('restaurants.index')->with([
-            'restaurants' => $restaurants
+            'restaurants' => $restaurants,
+            'searchTerms' => session('searchTerms', null),
         ]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
     }
 
     /**
@@ -50,43 +31,27 @@ class RestaurantController extends Controller
     public function show(string $slug)
     {
         $restaurant = Restaurant::where('slug', '=', $slug)->first();
-        
+
         return view('restaurants.show')->with([
             'restaurant' => $restaurant
         ]);
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\restaurant  $restaurant
-     * @return \Illuminate\Http\Response
+     * GET
+     * /search
+     * Show search results
+     * @param Request $request
+     * @return string
      */
-    public function edit(restaurant $restaurant)
+    public function search(Request $request)
     {
-        //
-    }
+        $searchTerms = $request->input('searchTerms', null);
+        $restaurants = Restaurant::where('name', 'LIKE', '%'.$searchTerms.'%')->get();
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\restaurant  $restaurant
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, restaurant $restaurant)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\restaurant  $restaurant
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(restaurant $restaurant)
-    {
-        //
+        return redirect('/restaurants')->with([
+            'searchTerms' => $searchTerms,
+            'searchedRestaurants' => $restaurants
+        ]);
     }
 }

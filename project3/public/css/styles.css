@@ -160,7 +160,7 @@ p {
     padding: 0 8px 0 0; }
 
 .slider {
-
+    background-color: #3a3a78;
     min-height: 800px; }
 @media (max-width: 992px) {
     .slider {

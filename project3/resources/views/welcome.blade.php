@@ -6,8 +6,7 @@
 
 @section('content')
 
-    <section class="slider d-flex align-items-center dark-bg">
-        <!-- <img src="images/slider.jpg" class="img-fluid" alt="#"> -->
+    <section class="slider d-flex align-items-center">
         <div class="container">
             <div class="row d-flex justify-content-center">
                 <div class="col-md-12">
@@ -16,15 +15,15 @@
                             <div class="col-md-12">
                                 <div class="slider-content_wrap">
                                     <h1>Find and review great restaurants</h1>
-                                    <h5>Let's uncover places to eat that you'll love.</h5>
+                                    <h5>Uncover places to eat that you'll love.</h5>
                                 </div>
                             </div>
                         </div>
                         <div class="row d-flex justify-content-center">
                             <div class="col-md-10">
-                                <form class="form-wrap mt-4">
+                                <form class="form-wrap mt-4" method='GET' action='http://localhost/e15/project3/public/search'>
                                     <div class="btn-group" role="group">
-                                        <input type="text" placeholder="Search for a restaurant" class="btn-group1">
+                                        <input type="text" name='searchTerms' placeholder="Search for a restaurant" class="btn-group1">
                                         <button type="submit" class="btn-form"><span class="icon-magnifier search-icon"></span>SEARCH<i class="pe-7s-angle-right"></i></button>
                                     </div>
                                 </form>

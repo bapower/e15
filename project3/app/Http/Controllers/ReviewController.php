@@ -50,15 +50,16 @@ class ReviewController extends Controller
         $restaurant = Restaurant::where('slug', '=', $slug)->first();
 
         $this->validate(request(), [
-            //'restaurant_id' => 'required|exists:restaurants,id',
             'title' => 'required',
-            'body' => 'required'
+            'body' => 'required',
+            'rating' => 'required'
         ]);
         $review = Review::create([
             'user_id' => auth()->id(),
             'restaurant_id' => $restaurant->id,
             'title' => request('title'),
             'body' => request('body'),
+            'rating' => request('rating'),
             'image' => request('image')
         ]);
 
@@ -112,11 +113,13 @@ class ReviewController extends Controller
 
         $request->validate([
             'title' => 'required',
-            'body' => 'required|min:50'
+            'body' => 'required',
+            'rating' => 'required'
         ]);
 
         $review->title = $request->title;
         $review->body = $request->body;
+        $review->rating = (int) $request->rating;
         $review->restaurant_id = $restaurant->id;
         $review->user_id = auth()->id();
         $review->save();

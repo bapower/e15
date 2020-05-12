@@ -43,3 +43,5 @@ Route::get('/restaurants/{restaurantSlug}/reviews/{review}/replies/{reply}/delet
 Route::get('/favorites', 'FavoritesController@show');
 Route::get('/favorites/{restaurantSlug}/add', 'FavoritesController@add');
 Route::get('/favorites/{restaurantSlug}/destroy', 'FavoritesController@destroy');
+
+Route::get('/search', 'RestaurantController@search');

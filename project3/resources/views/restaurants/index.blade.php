@@ -10,7 +10,12 @@
                     <div class="row detail-filter-wrap">
                         <div class="col-md-4 featured-responsive">
                             <div class="detail-filter-text">
-                                <p>{{ count($restaurants) }} Results For <span>Restaurants</span></p>
+                                @if(!is_null($searchTerms))
+                                    <p>{{ count($restaurants) }} restaurants found for search: <span>{{ $searchTerms }}</span></p>
+                                    <p><a href="http://localhost/e15/project3/public/restaurants">Browse all restaurants</a></p>
+                                @else
+                                    <p>{{ count($restaurants) }} <span>Restaurants</span></p>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -19,27 +24,29 @@
                             <div class="col-sm-6 col-lg-12 col-xl-4 featured-responsive">
                             <div class="featured-place-wrap">
                                 <a href="http://localhost/e15/project3/public/restaurants/{{ $restaurant->slug }}">
-                                    <img src="http://localhost/e15/project3/public/images/restaurants/restaurant_default.jpg" class="img-fluid" alt="#">
-                                    <span class="featured-rating-orange ">6.5</span>
+                                    <img src="http://localhost/e15/project3/public{{ $restaurant->image }}" class="img-fluid" alt="{{ $restaurant->name }}">
+                                    <span class="featured-rating-orange ">{{ $restaurant->rating }}</span>
                                     <div class="featured-title-box">
                                         <h6>{{ $restaurant->name }}</h6>
-                                        <p>Restaurant </p> <span>• </span>
                                         <p>{{ count($restaurant->reviews) }} Reviews</p> <span> • </span>
-                                        <p><span>$$$</span>$$</p>
+                                        <p><span>{{ str_repeat('$', $restaurant->cost_rating) }}</span>{{ str_repeat('$', 5-$restaurant->cost_rating) }}</p>
                                         <ul>
                                             <li><span class="icon-location-pin"></span>
                                                 <p>{{ $restaurant->street_address }}, {{ $restaurant->city }}, {{ $restaurant->state }}  {{ $restaurant->post_code }}</p>
                                             </li>
                                             <li><span class="icon-screen-smartphone"></span>
-                                                <p>+44 20 7336 8898</p>
+                                                <p>{{ $restaurant->phone_number }}</p>
                                             </li>
                                             <li><span class="icon-link"></span>
-                                                <p>https://burgerandlobster.com</p>
+                                                <p>{{ $restaurant->url }}</p>
                                             </li>
-
                                         </ul>
                                         <div class="bottom-icons">
-                                            <span class="ti-heart"></span>
+{{--                                            @if(auth()->user()->restaurants->contains($restaurant))--}}
+{{--                                                <span class="fa fa-heart"></span>--}}
+{{--                                            @else--}}
+                                                <span class="fa fa-heart-o"></span>
+{{--                                            @endif--}}
                                         </div>
                                     </div>
                                 </a>

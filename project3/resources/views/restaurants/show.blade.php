@@ -5,7 +5,7 @@
 @section('content')
     <div>
         <div class="banner-container text-center">
-            <img src="http://localhost/e15/project3/public/images/restaurants/restaurant_default.jpg" class="img-fluid" alt="#">
+            <img src="http://localhost/e15/project3/public{{ $restaurant->image }}" class="img-fluid" alt="{{ $restaurant->name }}">
         </div>
     </div>
     <section class="reserve-block">
@@ -13,13 +13,15 @@
             <div class="row">
                 <div class="col-md-6">
                     <h5>{{ $restaurant->name }}</h5>
-                    <p><span>$$$</span>$$</p>
-                    <p class="reserve-description">Innovative cooking, paired with fine wines in a modern setting.</p>
+                    <p><span>{{ str_repeat('$', $restaurant->cost_rating) }}</span>{{ str_repeat('$', 5-$restaurant->cost_rating) }}</p>
+                    <div>
+                        <p class="reserve-description">{{ $restaurant->tagline }}</p>
+                    </div>
                 </div>
                 <div class="col-md-6">
                     <div class="reserve-seat-block">
                         <div class="reserve-rating">
-                            <span>9.5</span>
+                            <span>{{ $restaurant->rating }}</span>
                         </div>
                         <div class="review-btn">
                             <a href=" http://localhost/e15/project3/public/restaurants/{{ $restaurant->slug }}/reviews/create" class="btn btn-outline-danger">WRITE A REVIEW</a>
@@ -51,11 +53,7 @@
                 <div class="col-md-8 responsive-wrap">
                     <div class="booking-checkbox_wrap">
                         <div class="booking-checkbox">
-                            <p>Tasty Hand-Pulled Noodles is a 1950s style diner located in Madison, Wisconsin. Opened in 1946 by Mickey Weidman, and located just across the street from Camp Randall Stadium, it has become a popular game day tradition amongst
-                                many Badger fans. The diner is well known for its breakfast selections, especially the Scrambler, which is a large mound of potatoes, eggs, cheese, gravy, and a patrons’ choice of other toppings.</p>
-                            <p>Mickies has also been featured on “Todd’s Taste of the Town” during one of ESPN’s college football broadcasts. We are one of the best Chinese restaurants in the New York, New York area. We have been recognized for our outstanding
-                                Chinese & Asian cuisine, excellent Chinese menu, and great restaurant specials. We are one of the best Chinese restaurants in the New York, New York area. We have been recognized for our outstanding Chinese & Asian cuisine,
-                                excellent Chinese menu, and great restaurant specials.</p>
+                            <p>{{ $restaurant->description }}</p>
                             <hr>
                         </div>
                     </div>
@@ -76,20 +74,15 @@
                         <img src="http://localhost/e15/project3/public/images/restaurants/map.jpg" class="img-fluid" alt="#">
                         <div class="address">
                             <span class="fa fa-map-marker"></span>
-                            <p> {{ $restaurant->street_address }}<br> {{ $restaurant->city }}, {{ $restaurant->state }} {{ $restaurant->post_code }}</p>
+                            <p>{{ $restaurant->street_address }}<br> {{ $restaurant->city }}, {{ $restaurant->state }} {{ $restaurant->post_code }}</p>
                         </div>
                         <div class="address">
                             <span class="fa fa-mobile"></span>
-                            <p> +44 20 7336 8898</p>
+                            <p>{{ $restaurant->phone_number }}</p>
                         </div>
                         <div class="address">
                             <span class="fa fa-link"></span>
-                            <p>https://burgerandlobster.com</p>
-                        </div>
-                        <div class="address">
-                            <span class="fa fa-clock-o"></span>
-                            <p>Mon - Sun 09:30 am - 05:30 pm <br>
-                                <span class="open-now">OPEN NOW</span></p>
+                            <p>{{ $restaurant->url }}</p>
                         </div>
                     </div>
                 </div>

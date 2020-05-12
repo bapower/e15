@@ -5,7 +5,7 @@
 @section('content')
     <div>
         <div class="banner-container text-center">
-            <img src="http://localhost/e15/project3/public/images/restaurants/restaurant_default.jpg" class="img-fluid" alt="#">
+            <img src="http://localhost/e15/project3/public{{ $restaurant->image }}" class="img-fluid" alt="{{ $restaurant->name }}">
         </div>
     </div>
     <section class="reserve-block">
@@ -13,13 +13,15 @@
             <div class="row">
                 <div class="col-md-6">
                     <h5>{{ $restaurant->name }}</h5>
-                    <p><span>$$$</span>$$</p>
-                    <p class="reserve-description">Innovative cooking, paired with fine wines in a modern setting.</p>
+                    <p><span>{{ str_repeat('$', $restaurant->cost_rating) }}</span>{{ str_repeat('$', 5-$restaurant->cost_rating) }}</p>
+                    <div>
+                        <p class="reserve-description">{{ $restaurant->tagline }}</p>
+                    </div>
                 </div>
                 <div class="col-md-6">
                     <div class="reserve-seat-block">
                         <div class="reserve-rating">
-                            <span>9.5</span>
+                            <span>{{ $restaurant->rating }}</span>
                         </div>
                         <div class="review-btn">
                             <a href="http://localhost/e15/project3/public/restaurants/{{ $restaurant->slug }}/reviews/create" class="btn btn-outline-danger">WRITE A REVIEW</a>
@@ -80,7 +82,7 @@
                                                 <span class="round-icon-blank"></span>
                                                 <p>Reviewed {{ $review->created_at->diffForHumans() }}</p>
                                             </div>
-                                            <div class="customer-rating">8.0</div>
+                                            <div class="customer-rating">{{ $review->rating }}</div>
                                         </div>
                                         <p class="customer-text">{{ substr($review->body, 0, 100) }}...
                                             <a class="review-link" href="http://localhost/e15/project3/public/restaurants/{{ $restaurant->slug }}/reviews/{{ $review->id }}/">read more</a>

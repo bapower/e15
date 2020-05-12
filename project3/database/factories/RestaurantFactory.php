@@ -15,6 +15,13 @@ $factory->define(Restaurant::class, function (Faker $faker) {
         'city' => $faker->city(),
         'state' => $faker->state(),
         'post_code' => $faker->postcode(),
+        'phone_number' => $faker->phoneNumber(),
+        'url' => $faker->url,
+        'rating' => rand(1,10),
+        'cost_rating' => rand(1,5),
+        'tagline' => $faker->sentence(),
+        'description' => $faker->paragraphs(rand(2,4), true),
+        'image' => '/images/restaurants/restaurant_default',
         'created_at' => $faker->dateTimeThisDecade(),
         'updated_at' => $faker->dateTimeThisDecade()
     ];

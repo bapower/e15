@@ -10,7 +10,7 @@
                     <div class="booking-checkbox_wrap mt-4">
                         <h5>{{ $review->title }}</h5>
                         <p class="text-center">Reviewed by: {{ $review->author->name }} {{ $review->created_at->diffForHumans() }}</p>
-                        <div class="customer-rating py-1">8.0</div>
+                        <div class="customer-rating py-1">{{ $review->rating }}</div>
                         @if (!is_null(auth()->user()) && auth()->user()->id === $review->user_id)
                             <div class="text-center author-actions">
                                 <a href="http://localhost/e15/project3/public/restaurants/{{ $restaurant->slug }}/reviews/{{ $review->id }}/edit"><i class="fa fa-edit"></i> Edit</a>&nbsp;&nbsp;&nbsp;

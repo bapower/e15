@@ -18,9 +18,10 @@ $factory->define(Review::class, function (Faker $faker) {
             return factory(Restaurant::class)->create()->id;
         },
         'title' => Str::title($title),
-        'body' => $faker->paragraphs(rand(1, 3), true),
+        'body' => $faker->paragraphs(rand(2, 6), true),
         'image' => 'http://www.lorempixel.com/640/480/food/',
-        'created_at' => $faker->dateTimeThisDecade(),
-        'updated_at' => $faker->dateTimeThisDecade(),
+        'rating' => rand(1,10),
+        'created_at' => $faker->dateTimeThisYear(),
+        'updated_at' => $faker->dateTimeThisYear(),
     ];
 });

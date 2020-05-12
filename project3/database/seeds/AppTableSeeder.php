@@ -17,7 +17,7 @@ class AppTableSeeder extends Seeder
         $restaurantNames = str_getcsv($restaurantNames);
 
         $faker = Faker\Factory::create();
-        foreach ($restaurantNames as $name) {
+        foreach ($restaurantNames as $i =>$name) {
             $slug = Str::slug($name, '-');
             $restaurant = new Restaurant();
 
@@ -27,12 +27,19 @@ class AppTableSeeder extends Seeder
             $restaurant->city = $faker->city();
             $restaurant->state = $faker->state();
             $restaurant->post_code = $faker->postcode();
+            $restaurant->phone_number = $faker->phoneNumber();
+            $restaurant->url = 'http://www.' . $slug . '.com/';
+            $restaurant->rating = rand(3,10);
+            $restaurant->cost_rating = rand(1,5);
+            $restaurant->tagline = $faker->sentence();
+            $restaurant->description = $faker->paragraphs(rand(2,4), true);
+            $restaurant->image = '/images/restaurants/restaurant' . ($i+1) . '.jpg';
             $restaurant->created_at = $faker->dateTimeThisDecade();
             $restaurant->updated_at = $faker->dateTimeThisDecade();
 
             $restaurant->save();
 
-            factory(Review::class, rand(0, 5))->create(['restaurant_id' => $restaurant->id, 'user_id' => rand(1,3)])->each(function ($review) {
+            factory(Review::class, rand(0, 20))->create(['restaurant_id' => $restaurant->id, 'user_id' => rand(1,3)])->each(function ($review) {
                 for ($i = 1; $i <= rand(1,5); $i++) {
                     $review->replies()->save(factory(App\Reply::class)->create(['review_id' => $review->id, 'user_id' => rand(1,3)]));
                 }
