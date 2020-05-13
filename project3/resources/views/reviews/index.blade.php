@@ -64,7 +64,7 @@
     <section class="light-bg restaurant-details-wrap">
         <div class="container">
             <div class="row">
-                <div class="col-md-10 offset-md-1 responsive-wrap">
+                <div class="col-md-8 offset-md-2 responsive-wrap">
                     <div class="restaurant-checkbox-wrap mt-4">
                         <h5>{{ count($restaurant->reviews) }} Reviews</h5>
                         <hr>
