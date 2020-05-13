@@ -71,7 +71,7 @@
                         @if(count($restaurant->reviews) > 0)
                             @foreach ($restaurant->reviews as $review)
                                 <div class="restaurant-review_wrap">
-                                    <div class="customer-img">
+                                    <div class="user-info">
                                         <p>Reviewed by:</p>
                                         <p>{{ $review->author->name }}</p>
                                         @if (!is_null(auth()->user()) && auth()->user()->id === $review->user_id)

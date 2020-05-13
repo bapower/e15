@@ -1,5 +1,5 @@
 <div class="restaurant-review_wrap">
-    <div class="customer-img">
+    <div class="user-info">
         <p>{{ $reply->author->name }} said:</p>
         <p>{{ $reply->created_at->diffForHumans() }}</p>
         @if (!is_null(auth()->user()) && auth()->user()->id === $reply->user_id)
