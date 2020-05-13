@@ -39,11 +39,13 @@ class AppTableSeeder extends Seeder
 
             $restaurant->save();
 
-            factory(Review::class, rand(0, 20))->create(['restaurant_id' => $restaurant->id, 'user_id' => rand(1,3)])->each(function ($review) {
+            for ($i = 1; $i <= rand(1,20); $i++) {
+                $review = factory(Review::class)->create(['restaurant_id' => $restaurant->id, 'user_id' => rand(1,13)]);
                 for ($i = 1; $i <= rand(1,5); $i++) {
-                    $review->replies()->save(factory(App\Reply::class)->create(['review_id' => $review->id, 'user_id' => rand(1,3)]));
+                    $review->replies()->save(factory(App\Reply::class)->create(['review_id' => $review->id, 'user_id' => rand(1,13)]));
                 }
-            });
+            }
+
         }
     }
 }

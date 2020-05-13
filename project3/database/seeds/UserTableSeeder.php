@@ -26,5 +26,7 @@ class UserTableSeeder extends Seeder
             ['email' => 'jamal@harvard.edu', 'name' => 'Jamal Harvard'],
             ['password' => Hash::make('helloworld')
             ]);
+
+        factory(User::class, 10)->create();
     }
 }
