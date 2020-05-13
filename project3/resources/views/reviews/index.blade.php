@@ -64,7 +64,7 @@
     <section class="light-bg restaurant-details-wrap">
         <div class="container">
             <div class="row">
-                <div class="col-md-8 offset-md-2 responsive-wrap">
+                <div class="col-md-10 offset-md-1 responsive-wrap">
                     <div class="restaurant-checkbox-wrap mt-4">
                         <h5>{{ count($restaurant->reviews) }} Reviews</h5>
                         <hr>
@@ -101,7 +101,7 @@
                                                 <div class="user-rating bad">{{ $review->rating }}</div>
                                             @endif
                                         </div>
-                                        <p class="user-text">{{ substr($review->body, 0, 100) }}...
+                                        <p class="user-text">{{ substr($review->body, 0, 125) }}...
                                             <a class="review-link" href="/restaurants/{{ $restaurant->slug }}/reviews/{{ $review->id }}/">read more</a>
                                         </p>
                                     </div>
