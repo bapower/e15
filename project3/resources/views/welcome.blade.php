@@ -28,7 +28,7 @@
                                     </div>
                                 </form>
                                 <div class="welcome-banner-link">
-                                    <a href="/restaurants/popular">Browse Popular</a><span>or</span> <a href="#">Recently Added</a>
+                                    <a href="/restaurants/popular">Browse Popular</a><span>or</span> <a href="/restaurants/recent">Recently Added</a>
                                 </div>
                             </div>
                         </div>
