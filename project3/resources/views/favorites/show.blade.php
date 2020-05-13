@@ -24,7 +24,13 @@
                                         <div class="featured-place-wrap">
                                             <a href="/restaurants/{{ $restaurant->slug }}">
                                                 <img src="{{ $restaurant->image }}" class="img-fluid" alt="{{ $restaurant->name }}">
-                                                <span class="featured-rating-orange ">{{ $restaurant->rating }}</span>
+                                                @if($restaurant->rating > 6)
+                                                    <span class="featured-rating-green">{{ $restaurant->rating }}</span>
+                                                @elseif($restaurant->rating > 3 && $restaurant->rating < 7)
+                                                    <span class="featured-rating-orange">{{ $restaurant->rating }}</span>
+                                                @else
+                                                    <span class="featured-rating">{{ $restaurant->rating }}</span>
+                                                @endif
                                                 <div class="featured-title-box">
                                                     <h6>{{ $restaurant->name }}</h6>
                                                     <p>{{ count($restaurant->reviews) }} Reviews</p> <span> • </span>

@@ -8,18 +8,18 @@
             <img src="{{ $restaurant->image }}" class="img-fluid" alt="{{ $restaurant->name }}">
         </div>
     </div>
-    <section class="reserve-block">
+    <section class="restaurant-detail-block">
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
                     <h5>{{ $restaurant->name }}</h5>
                     <p><span>{{ str_repeat('$', $restaurant->cost_rating) }}</span>{{ str_repeat('$', 5-$restaurant->cost_rating) }}</p>
                     <div>
-                        <p class="reserve-description">{{ $restaurant->tagline }}</p>
+                        <p class="restaurant-detail-description">{{ $restaurant->tagline }}</p>
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="reserve-seat-block">
+                    <div class="restaurant-detail-seat-block">
                         @if($restaurant->rating > 8)
                             <div class="restaurant-rating good">
                                 <span>{{ $restaurant->rating }}</span>
@@ -43,13 +43,13 @@
                         </div>
                         @if (auth()->check())
                             @if (auth()->user()->restaurants()->find($restaurant->id))
-                                <div class="reserve-btn">
+                                <div class="fav-btn">
                                     <div class="featured-btn-wrap">
                                         <a href="/favorites/{{ $restaurant->slug }}/destroy" dusk="remove-favorite-restaurant" class="btn btn-danger"><span class="fa fa-trash"></span> REMOVE FROM FAVORITES</a>
                                     </div>
                                 </div>
                             @else
-                                <div class="reserve-btn">
+                                <div class="fav-btn">
                                     <div class="featured-btn-wrap">
                                         <a href="/favorites/{{ $restaurant->slug }}/add" dusk="favorites-button-restaurant" class="btn btn-danger"><span class="fa fa-heart-o"></span> ADD TO FAVORITES</a>
                                     </div>
@@ -61,23 +61,23 @@
             </div>
         </div>
     </section>
-    <section class="light-bg booking-details_wrap">
+    <section class="light-bg restaurant-details-wrap">
         <div class="container">
             <div class="row">
                 <div class="col-md-8 responsive-wrap">
-                    <div class="booking-checkbox_wrap">
-                        <div class="booking-checkbox">
+                    <div class="restaurant-checkbox-wrap">
+                        <div class="restaurant-checkbox">
                             <p>{{ $restaurant->description }}</p>
                             <hr>
                         </div>
                     </div>
                     @if(count($restaurant->reviews) > 0)
-                        <div class="booking-checkbox_wrap mt-4">
+                        <div class="restaurant-checkbox-wrap mt-4">
                             <h5>{{ count($restaurant->reviews) }} Reviews</h5>
                             <p class="text-center"><a href="/restaurants/{{ $restaurant->slug }}/reviews">Read reviews for {{ $restaurant->name }}</a></p>
                         </div>
                     @else
-                        <div class="booking-checkbox_wrap mt-4 text-center">
+                        <div class="restaurant-checkbox-wrap mt-4 text-center">
                             <p>{{ $restaurant->name }} doesn't have any reviews yet</p>
                             <p><a href="/restaurants/{{ $restaurant->slug }}/reviews/create" dusk="write-restaurant-review">Write a review</a></p>
                         </div>

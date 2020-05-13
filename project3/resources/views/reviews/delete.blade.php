@@ -3,11 +3,11 @@
     {{ 'Confirm delete review' }}
 @endsection
 @section('content')
-    <section class="light-bg booking-details_wrap">
+    <section class="light-bg restaurant-details-wrap">
         <div class="container">
             <div class="row">
                 <div class="col-md-8 offset-md-2 responsive-wrap">
-                    <div class="booking-checkbox_wrap mt-4 text-center">
+                    <div class="restaurant-checkbox-wrap mt-4 text-center">
                         <h5 class="mb-3">Confirm delete review</h5>
                         <p>Are you sure you want to delete this review?</p>
                         @if (auth()->check())

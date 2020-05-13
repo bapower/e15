@@ -3,11 +3,11 @@
     {{ $restaurant ? 'Write a review for ' . $restaurant->name : 'Restaurant not found' }}
 @endsection
 @section('content')
-    <section class="light-bg booking-details_wrap">
+    <section class="light-bg restaurant-details-wrap">
         <div class="container">
             <div class="row">
                 <div class="col-md-8 offset-md-2 responsive-wrap">
-                    <div class="booking-checkbox_wrap mt-4">
+                    <div class="restaurant-checkbox-wrap mt-4">
                         <h5 class="mb-3">Write a review for {{ $restaurant->name }}</h5>
                         @if (auth()->check())
                             <div class="row justify-content-center">

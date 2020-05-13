@@ -8,18 +8,18 @@
             <img src="{{ $restaurant->image }}" class="img-fluid" alt="{{ $restaurant->name }}">
         </div>
     </div>
-    <section class="reserve-block">
+    <section class="restaurant-detail-block">
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
                     <h5>{{ $restaurant->name }}</h5>
                     <p><span>{{ str_repeat('$', $restaurant->cost_rating) }}</span>{{ str_repeat('$', 5-$restaurant->cost_rating) }}</p>
                     <div>
-                        <p class="reserve-description">{{ $restaurant->tagline }}</p>
+                        <p class="restaurant-detail-description">{{ $restaurant->tagline }}</p>
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="reserve-seat-block">
+                    <div class="restaurant-detail-seat-block">
                         @if($restaurant->rating > 8)
                             <div class="restaurant-rating good">
                                 <span>{{ $restaurant->rating }}</span>
@@ -43,13 +43,13 @@
                         </div>
                         @if (auth()->check())
                             @if (auth()->user()->restaurants()->find($restaurant->id))
-                                <div class="reserve-btn">
+                                <div class="fav-btn">
                                     <div class="featured-btn-wrap">
                                         <a href="/favorites/{{ $restaurant->slug }}/destroy" class="btn btn-danger"><span class="fa fa-trash"></span> REMOVE FROM FAVORITES</a>
                                     </div>
                                 </div>
                             @else
-                                <div class="reserve-btn">
+                                <div class="fav-btn">
                                     <div class="featured-btn-wrap">
                                         <a href="/favorites/{{ $restaurant->slug }}/add" class="btn btn-danger"><span class="fa fa-heart-o"></span> ADD TO FAVORITES</a>
                                     </div>
@@ -61,16 +61,16 @@
             </div>
         </div>
     </section>
-    <section class="light-bg booking-details_wrap">
+    <section class="light-bg restaurant-details-wrap">
         <div class="container">
             <div class="row">
                 <div class="col-md-8 offset-md-2 responsive-wrap">
-                    <div class="booking-checkbox_wrap mt-4">
+                    <div class="restaurant-checkbox-wrap mt-4">
                         <h5>{{ count($restaurant->reviews) }} Reviews</h5>
                         <hr>
                         @if(count($restaurant->reviews) > 0)
                             @foreach ($restaurant->reviews as $review)
-                                <div class="customer-review_wrap">
+                                <div class="restaurant-review_wrap">
                                     <div class="customer-img">
                                         <p>Reviewed by:</p>
                                         <p>{{ $review->author->name }}</p>
@@ -85,23 +85,23 @@
                                             </div>
                                         @endif
                                     </div>
-                                    <div class="customer-content-wrap">
-                                        <div class="customer-content">
-                                            <div class="customer-review">
+                                    <div class="user-content-wrap">
+                                        <div class="user-content">
+                                            <div class="restaurant-review">
                                                 <h6>{{ $review->title }}</h6>
                                                 <p>Reviewed {{ $review->created_at->diffForHumans() }}</p>
                                             </div>
                                             @if($review->rating > 8)
-                                                <div class="customer-rating good">{{ $review->rating }}</div>
+                                                <div class="user-rating good">{{ $review->rating }}</div>
                                             @elseif($review->rating > 6 && $review->rating < 9)
-                                                <div class="customer-rating ok">{{ $review->rating }}</div>
+                                                <div class="user-rating ok">{{ $review->rating }}</div>
                                             @elseif($review->rating > 3 && $review->rating < 7)
-                                                <div class="customer-rating not-good">{{ $review->rating }}</div>
+                                                <div class="user-rating not-good">{{ $review->rating }}</div>
                                             @else
-                                                <div class="customer-rating bad">{{ $review->rating }}</div>
+                                                <div class="user-rating bad">{{ $review->rating }}</div>
                                             @endif
                                         </div>
-                                        <p class="customer-text">{{ substr($review->body, 0, 100) }}...
+                                        <p class="user-text">{{ substr($review->body, 0, 100) }}...
                                             <a class="review-link" href="/restaurants/{{ $restaurant->slug }}/reviews/{{ $review->id }}/">read more</a>
                                         </p>
                                     </div>

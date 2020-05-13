@@ -25,10 +25,16 @@
                     <div class="row light-bg detail-options-wrap">
                         @foreach ($restaurants as $i => $restaurant)
                             <div class="col-sm-6 col-lg-12 col-xl-4 featured-responsive">
-                            <div class="featured-place-wrap">
+                            <div class="restaurant-list-wrap">
                                 <a href="/restaurants/{{ $restaurant->slug }}">
                                     <img src="{{ $restaurant->image }}" class="img-fluid" alt="{{ $restaurant->name }}">
-                                    <span class="featured-rating-orange ">{{ $restaurant->rating }}</span>
+                                    @if($restaurant->rating > 6)
+                                        <span class="featured-rating-green">{{ $restaurant->rating }}</span>
+                                    @elseif($restaurant->rating > 3 && $restaurant->rating < 7)
+                                        <span class="featured-rating-orange">{{ $restaurant->rating }}</span>
+                                    @else
+                                        <span class="featured-rating">{{ $restaurant->rating }}</span>
+                                    @endif
                                     <div class="featured-title-box">
                                         <h6>{{ $restaurant->name }}</h6>
                                         <p>{{ count($restaurant->reviews) }} Reviews</p> <span> • </span>

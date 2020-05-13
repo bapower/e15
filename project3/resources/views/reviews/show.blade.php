@@ -8,34 +8,34 @@
             <img src="{{ $restaurant->image }}" class="img-fluid" alt="{{ $restaurant->name }}">
         </div>
     </div>
-    <section class="reserve-block">
+    <section class="restaurant-detail-block">
         <div class="container">
             <div class="row">
                 <div class="col-md-12 text-center">
                     <h5>Review of {{ $restaurant->name }}</h5>
                     <p><span>{{ str_repeat('$', $restaurant->cost_rating) }}</span>{{ str_repeat('$', 5-$restaurant->cost_rating) }}</p>
                     <div>
-                        <p class="reserve-description">{{ $restaurant->tagline }}</p>
+                        <p class="restaurant-detail-description">{{ $restaurant->tagline }}</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <section class="light-bg booking-details_wrap">
+    <section class="light-bg restaurant-details-wrap">
         <div class="container">
             <div class="row">
                 <div class="col-md-8 offset-md-2 responsive-wrap">
-                    <div class="booking-checkbox_wrap mt-4">
+                    <div class="restaurant-checkbox-wrap mt-4">
                         <h5>{{ $review->title }}</h5>
                         <p class="text-center">Reviewed by: {{ $review->author->name }} {{ $review->created_at->diffForHumans() }}</p>
                         @if($review->rating > 8)
-                            <div class="customer-rating py-1 good">{{ $review->rating }}</div>
+                            <div class="user-rating py-1 good">{{ $review->rating }}</div>
                         @elseif($review->rating > 6 && $review->rating < 9)
-                            <div class="customer-rating py-1 ok">{{ $review->rating }}</div>
+                            <div class="user-rating py-1 ok">{{ $review->rating }}</div>
                         @elseif($review->rating > 3 && $review->rating < 7)
-                            <div class="customer-rating py-1 not-good">{{ $review->rating }}</div>
+                            <div class="user-rating py-1 not-good">{{ $review->rating }}</div>
                         @else
-                            <div class="customer-rating py-1 bad">{{ $review->rating }}</div>
+                            <div class="user-rating py-1 bad">{{ $review->rating }}</div>
                         @endif
                         @if (!is_null(auth()->user()) && auth()->user()->id === $review->user_id)
                             <div class="text-center author-actions">
@@ -44,7 +44,7 @@
                             </div>
                         @endif
                         <hr>
-                        <p class="customer-text">{{ $review->body }}</p>
+                        <p class="user-text">{{ $review->body }}</p>
                         @if(auth()->check())
                             <div class="mt-3 helpful-container text-center">
                                 <span class="text-info">{{ $review->helpful }} people marked this review as helpful</span>
@@ -58,11 +58,11 @@
         </div>
     </section>
     @if (count($review->replies) > 0)
-        <section class="light-bg booking-details_wrap">
+        <section class="light-bg restaurant-details-wrap">
             <div class="container">
                 <div class="row">
                     <div class="col-md-8 offset-md-2 responsive-wrap">
-                        <div class="booking-checkbox_wrap mt-4">
+                        <div class="restaurant-checkbox-wrap mt-4">
                             <p>{{ count($review->replies) }} Replies</p>
                             <hr>
                             @foreach ($review->replies as $reply)
@@ -74,7 +74,7 @@
             </div>
         </section>
     @endif
-    <section class="light-bg booking-details_wrap">
+    <section class="light-bg restaurant-details-wrap">
         <div class="container">
             <div class="row">
                 <div class="col-md-8 offset-md-2 responsive-wrap">

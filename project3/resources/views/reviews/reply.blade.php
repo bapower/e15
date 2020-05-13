@@ -1,4 +1,4 @@
-<div class="customer-review_wrap">
+<div class="restaurant-review_wrap">
     <div class="customer-img">
         <p>{{ $reply->author->name }} said:</p>
         <p>{{ $reply->created_at->diffForHumans() }}</p>
@@ -10,8 +10,8 @@
             </div>
         @endif
     </div>
-    <div class="customer-content-wrap">
-        <p class="customer-text">{{ $reply->body }}</p>
+    <div class="user-content-wrap">
+        <p class="user-text">{{ $reply->body }}</p>
     </div>
 </div>
 <hr>
