@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Restaurant;
-use App\Review;
-use Illuminate\Http\Request;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Routing\Redirector;
+use Illuminate\View\View;
 
 class FavoritesController extends Controller
 {
@@ -12,11 +15,10 @@ class FavoritesController extends Controller
     {
         $this->middleware('auth');
     }
+
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Review  $review
-     * @return \Illuminate\Http\Response
+     * Display the users list of favorites.
+     * @return Application|Factory|View
      */
     public function show()
     {
@@ -26,7 +28,11 @@ class FavoritesController extends Controller
         ]);
     }
 
-    public function add(Request $request, string $slug)
+    /**
+     * Add a favorite restaurant to the user's favorites
+     * @return Application|RedirectResponse|Redirector
+     */
+    public function add(string $slug)
     {
         $restaurant = Restaurant::where('slug', '=', $slug)->first();
         auth()->user()->restaurants()->save($restaurant);
@@ -37,10 +43,10 @@ class FavoritesController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the relationship between restaurant and user
      *
-     * @param  \App\Review  $review
-     * @return \Illuminate\Http\Response
+     * @param string $slug
+     * @return Application|RedirectResponse|Redirector
      */
     public function destroy(string $slug)
     {

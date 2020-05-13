@@ -4,14 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Restaurant;
 use Carbon\Carbon;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Redirector;
+use Illuminate\View\View;
 
 class RestaurantController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * Display the list of restaurants.
+     * @return Application|Factory|View
      */
     public function index()
     {
@@ -25,10 +29,10 @@ class RestaurantController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display the restaurant page
      *
-     * @param  \App\restaurant  $restaurant
-     * @return \Illuminate\Http\Response
+     * @param string $slug
+     * @return Application|Factory|View
      */
     public function show(string $slug)
     {
@@ -44,7 +48,7 @@ class RestaurantController extends Controller
      * /search
      * Show search results
      * @param Request $request
-     * @return string
+     * @return Application|RedirectResponse|Redirector
      */
     public function search(Request $request)
     {
@@ -61,10 +65,9 @@ class RestaurantController extends Controller
      * GET
      * /popular
      * Show popular restaurants
-     * @param Request $request
-     * @return string
+     * @return Application|RedirectResponse|Redirector
      */
-    public function popular(Request $request)
+    public function popular()
     {
         $restaurants = Restaurant::where('rating', '>', '8')->get();
 
@@ -78,10 +81,9 @@ class RestaurantController extends Controller
      * GET
      * /recent
      * Show recently added restaurants
-     * @param Request $request
-     * @return string
+     *  @return Application|RedirectResponse|Redirector
      */
-    public function recent(Request $request)
+    public function recent()
     {
         $restaurants = Restaurant::where('created_at', '>', Carbon::now()->subDays(90))->get();
 

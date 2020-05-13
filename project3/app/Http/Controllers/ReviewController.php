@@ -4,7 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Restaurant;
 use App\Review;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Redirector;
+use Illuminate\Validation\ValidationException;
+use Illuminate\View\View;
 
 class ReviewController extends Controller
 {
@@ -14,9 +20,10 @@ class ReviewController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
+     * Display the review for the given restaurant
      *
-     * @return \Illuminate\Http\Response
+     * @param string $slug
+     * @return Application|Factory|View
      */
     public function index(string $slug)
     {
@@ -27,9 +34,10 @@ class ReviewController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the add a review page
      *
-     * @return \Illuminate\Http\Response
+     * @param string $slug
+     * @return Application|Factory|View
      */
     public function create(string $slug)
     {
@@ -40,10 +48,11 @@ class ReviewController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * save the review
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param string $slug
+     * @return Application|RedirectResponse|Redirector
+     * @throws ValidationException
      */
     public function store(string $slug)
     {
@@ -69,10 +78,11 @@ class ReviewController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * show the review page
      *
-     * @param  \App\Review  $review
-     * @return \Illuminate\Http\Response
+     * @param string $restaurantSlug
+     * @param Review $review
+     * @return Application|Factory|View
      */
     public function show(string $restaurantSlug, Review $review)
     {
@@ -84,10 +94,11 @@ class ReviewController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Show the edit review page
      *
-     * @param  \App\Review  $review
-     * @return \Illuminate\Http\Response
+     * @param string $restaurantSlug
+     * @param int $id
+     * @return Application|Factory|View
      */
     public function edit(string $restaurantSlug, int $id)
     {
@@ -100,11 +111,12 @@ class ReviewController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the review
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Review  $review
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param string $restaurantSlug
+     * @param int $id
+     * @return Application|RedirectResponse|Redirector
      */
     public function update(Request $request, string $restaurantSlug, int $id)
     {
@@ -130,10 +142,11 @@ class ReviewController extends Controller
     }
 
     /**
-     * Show the confirmation page before destroying specified resource.
+     * Show the confirm delete page
      *
-     * @param  \App\Review  $review
-     * @return \Illuminate\Http\Response
+     * @param string $restaurantSlug
+     * @param int $id
+     * @return Application|Factory|RedirectResponse|View
      */
     public function delete(string $restaurantSlug, int $id)
     {
@@ -153,10 +166,11 @@ class ReviewController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * delete the review
      *
-     * @param  \App\Review  $review
-     * @return \Illuminate\Http\Response
+     * @param string $restaurantSlug
+     * @param int $reviewId
+     * @return Application|RedirectResponse|Redirector
      */
     public function destroy(string $restaurantSlug, int $reviewId)
     {
@@ -172,7 +186,9 @@ class ReviewController extends Controller
 
     /**
      * Add one more helpful vote.
-     *
+     * @param string $restaurantSlug
+     * @param int $reviewId
+     * @return Application|RedirectResponse|Redirector
      */
     public function helpful(string $restaurantSlug, int $reviewId)
     {

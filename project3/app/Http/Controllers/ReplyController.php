@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Reply;
-use App\Restaurant;
 use App\Review;
-use Illuminate\Http\Request;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Routing\Redirector;
+use Illuminate\Validation\ValidationException;
 
 class ReplyController extends Controller
 {
@@ -15,10 +17,12 @@ class ReplyController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * save a reply
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param string $restaurantSlug
+     * @param Review $review
+     * @return RedirectResponse
+     * @throws ValidationException
      */
     public function store(string $restaurantSlug, Review $review)
     {
@@ -36,10 +40,12 @@ class ReplyController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * remove the reply from the review
      *
-     * @param  \App\Review  $review
-     * @return \Illuminate\Http\Response
+     * @param string $restaurantSlug
+     * @param int $reviewId
+     * @param int $replyId
+     * @return Application|RedirectResponse|Redirector
      */
     public function destroy(string $restaurantSlug, int $reviewId, int $replyId)
     {
