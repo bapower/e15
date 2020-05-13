@@ -69,7 +69,7 @@
                         <h5>{{ count($restaurant->reviews) }} Reviews</h5>
                         <hr>
                         @if(count($restaurant->reviews) > 0)
-                            @foreach ($restaurant->reviews as $review)
+                            @foreach ($restaurant->reviews->sortByDesc('created_at') as $review)
                                 <div class="restaurant-review_wrap">
                                     <div class="user-info">
                                         <p>Reviewed by:</p>

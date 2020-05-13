@@ -67,7 +67,7 @@
                         <div class="restaurant-checkbox-wrap mt-4">
                             <p>{{ count($review->replies) }} Replies</p>
                             <hr>
-                            @foreach ($review->replies as $reply)
+                            @foreach ($review->replies->sortByDesc('created_at') as $reply)
                                 @include('reviews.reply')
                             @endforeach
                         </div>

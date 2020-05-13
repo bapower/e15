@@ -29,7 +29,7 @@ class ReviewController extends Controller
     {
         $restaurant = Restaurant::where('slug', '=', $slug)->first();
         return view('reviews.index')->with([
-            'restaurant' =>$restaurant
+            'restaurant' => $restaurant
         ]);
     }
 
