@@ -16,6 +16,8 @@
                     <p><span>{{ str_repeat('$', $restaurant->cost_rating) }}</span>{{ str_repeat('$', 5-$restaurant->cost_rating) }}</p>
                     <div>
                         <p class="restaurant-detail-description">{{ $restaurant->tagline }}</p>
+                        <br>
+                        <p class="mt-3"><a href="/restaurants/{{ $restaurant->slug }}/reviews" class="text-info">See all reviews</a></p>
                     </div>
                 </div>
             </div>
@@ -24,7 +26,7 @@
     <section class="light-bg restaurant-details-wrap">
         <div class="container">
             <div class="row">
-                <div class="col-md-8 offset-md-2 responsive-wrap">
+                <div class="col-md-10 offset-md-1 responsive-wrap">
                     <div class="restaurant-checkbox-wrap mt-4">
                         <h5>{{ $review->title }}</h5>
                         <p class="text-center">Reviewed by: {{ $review->author->name }} {{ $review->created_at->diffForHumans() }}</p>
@@ -61,7 +63,7 @@
         <section class="light-bg restaurant-details-wrap">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-8 offset-md-2 responsive-wrap">
+                    <div class="col-md-10 offset-md-1 responsive-wrap">
                         <div class="restaurant-checkbox-wrap mt-4">
                             <p>{{ count($review->replies) }} Replies</p>
                             <hr>
@@ -77,7 +79,7 @@
     <section class="light-bg restaurant-details-wrap">
         <div class="container">
             <div class="row">
-                <div class="col-md-8 offset-md-2 responsive-wrap">
+                <div class="col-md-10 offset-md-1 responsive-wrap">
                     @if (auth()->check())
                         <div class="row justify-content-center">
                             <div class="col-md-12">
