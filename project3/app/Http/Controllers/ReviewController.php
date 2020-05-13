@@ -48,14 +48,11 @@ class ReviewController extends Controller
     public function store(string $slug)
     {
         $restaurant = Restaurant::where('slug', '=', $slug)->first();
-        $imageName = time();
-        request()->image->move(public_path('images'), $imageName);
 
         $this->validate(request(), [
             'title' => 'required',
             'body' => 'required',
-            'rating' => 'required',
-            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+            'rating' => 'required'
         ]);
         $review = Review::create([
             'user_id' => auth()->id(),
@@ -63,8 +60,7 @@ class ReviewController extends Controller
             'title' => request('title'),
             'body' => request('body'),
             'helpful' => 0,
-            'rating' => request('rating'),
-            'image' => request('image')
+            'rating' => request('rating')
         ]);
 
         return redirect('/restaurants/' . $restaurant->slug . '/reviews/' . $review->id)->with([

@@ -42,11 +42,6 @@
                                             </select>
                                             @include('includes.error-field', ['fieldName' => 'rating'])
                                         </div>
-                                        <div class="form-group">
-                                            <label for="image">Image:</label>
-                                            <input type="file" id="image" name="image" class="form-control" accept="image/*" value='{{ old('image') }}'></input>
-                                            @include('includes.error-field', ['fieldName' => 'image'])
-                                        </div>
                                         <div class="featured-btn-wrap">
                                             <button type="submit" class="btn btn-danger" dusk="publish-review">Publish</button>
                                         </div>
